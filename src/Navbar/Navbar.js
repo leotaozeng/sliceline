@@ -4,8 +4,10 @@ import { pizzaRad } from '../Styles/colors'
 import { Title } from '../Styles/title'
 
 const NavbarStyled = styled.div`
+  position: fixed;
   background-color: ${pizzaRad};
   padding: 10px;
+  width: 100%;
 `
 
 const Logo = styled(Title)`
