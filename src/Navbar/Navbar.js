@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+
 import { pizzaRad } from '../Styles/colors'
 import { Title } from '../Styles/title'
 
@@ -21,7 +22,7 @@ export function Navbar() {
   return (
     <NavbarStyled>
       <Logo>
-        Sliceline
+        Sliceline&nbsp;
         <span role="img" aria-label="logo">
           🍕
         </span>
