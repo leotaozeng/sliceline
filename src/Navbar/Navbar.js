@@ -6,6 +6,8 @@ import { Title } from '../Styles/title'
 
 const NavbarStyled = styled.div`
   position: fixed;
+  top: 0;
+  left: 0;
   background-color: ${pizzaRad};
   padding: 10px;
   width: 100%;

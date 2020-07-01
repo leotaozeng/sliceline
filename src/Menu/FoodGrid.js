@@ -9,25 +9,42 @@ export const FoodGrid = styled.ul`
   gap: 20px;
 `
 
-export const FoodLabel = styled.div`
-  position: absolute;
-  padding: 5px;
-  background-color: rgba(255, 255, 255, 0.8);
-`
-
 export const Food = styled.li`
-  height: 100px;
-  padding: 10px;
+  position: relative;
+  width: 100%;
+  height: 120px;
   border-radius: 0.3rem;
-  background: ${({ image }) => `url(${image}) no-repeat center/cover`};
-  filter: contrast(75%);
   font-family: 'Righteous', cursive;
   font-size: 20px;
   box-shadow: 0 0.125rem 0.25rem grey;
-  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+  cursor: pointer;
 
   &:hover {
-    cursor: pointer;
-    opacity: 0.7;
+    > a {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
   }
+`
+
+export const FoodLink = styled.a`
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background: ${({ image }) => `url(${image}) no-repeat center/cover`};
+  filter: contrast(75%);
+  box-sizing: border-box;
+  transition: transform 0.3s ease-in-out;
+`
+
+export const FoodLabel = styled.span`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px;
+  border-radius: 0.2rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 999;
 `
