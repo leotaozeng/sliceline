@@ -16,12 +16,16 @@ export const Food = styled.li`
   border-radius: 0.3rem;
   font-family: 'Righteous', cursive;
   font-size: 20px;
-  box-shadow: 0 0.125rem 0.25rem grey;
   overflow: hidden;
   cursor: pointer;
+  box-shadow: 0 0.125rem 0.25rem grey;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
+    box-shadow: 0 5px 10px grey;
+
     > a {
+      filter: contrast(100%);
       transform: scale(1.1);
       cursor: pointer;
     }
@@ -36,7 +40,7 @@ export const FoodLink = styled.a`
   background: ${({ image }) => `url(${image}) no-repeat center/cover`};
   filter: contrast(75%);
   box-sizing: border-box;
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 `
 
 export const FoodLabel = styled.span`
