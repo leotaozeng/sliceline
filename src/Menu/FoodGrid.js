@@ -32,6 +32,17 @@ export const Food = styled.li`
   }
 `
 
+export const FoodLabel = styled.span`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px;
+  border-radius: 0.2rem;
+  font-family: 'Righteous', cursive;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 999;
+`
+
 export const FoodLink = styled.a`
   display: block;
   width: 100%;
@@ -41,14 +52,4 @@ export const FoodLink = styled.a`
   filter: contrast(75%);
   box-sizing: border-box;
   transition: all 0.3s ease-in-out;
-`
-
-export const FoodLabel = styled.span`
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  padding: 5px;
-  border-radius: 0.2rem;
-  background-color: rgba(255, 255, 255, 0.8);
-  z-index: 999;
 `
