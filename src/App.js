@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 
 import { GlobalStyle } from './Styles/GlobalStyle'
+import { FoodDialog } from './FoodDialog/FoodDialog'
 import { Navbar } from './Navbar/Navbar'
 import { Banner } from './Banner/Banner'
 import { Menu } from './Menu/Menu'
-import { FoodDialog } from './FoodDialog/FoodDialog'
+import { Order } from './Order/Order'
 
 function App() {
   const [openFood, setOpenFood] = useState()
@@ -16,6 +17,7 @@ function App() {
       <Navbar />
       <Banner />
       <Menu setOpenFood={setOpenFood} />
+      <Order />
     </>
   )
 }

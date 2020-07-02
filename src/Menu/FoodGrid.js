@@ -40,7 +40,7 @@ export const FoodLabel = styled.span`
   border-radius: 0.2rem;
   font-family: 'Righteous', cursive;
   background-color: rgba(255, 255, 255, 0.8);
-  z-index: 999;
+  z-index: 998;
 `
 
 export const FoodLink = styled.a`
