@@ -2,79 +2,101 @@ const foodList = [
   {
     name: 'Nachos',
     image: 'images/nachos.jpg',
-    section: 'Appetizers'
+    section: 'Appetizers',
+    price: 3
   },
   {
     name: 'Antipasto Skewers',
     image: 'images/antipasto-skewers.jpg',
-    section: 'Appetizers'
+    section: 'Appetizers',
+    price: 1.5
   },
   {
     name: 'Pico de Gallo',
     image: 'images/pico-de-gallo.jpg',
-    section: 'Appetizers'
+    section: 'Appetizers',
+    price: 3.5
   },
   {
     name: 'Cucumber Canapes',
     image: 'images/cucumber-canapes.jpg',
-    section: 'Appetizers'
+    section: 'Appetizers',
+    price: 2
   },
   {
     name: 'Cheese Pizza',
     image: 'images/pizza.png',
-    section: 'Pizza'
+    section: 'Pizza',
+    price: 2
   },
   {
     name: 'Pepperoni Pizza',
     image: 'images/pizza2.jpeg',
-    section: 'Pizza'
+    section: 'Pizza',
+    price: 2
   },
   {
     name: 'Chicken Pizza',
     image: 'images/chicken-pizza.jpeg',
-    section: 'Pizza'
+    section: 'Pizza',
+    price: 2
   },
   {
     name: 'Veggie Pizza',
     image: 'images/healthy-pizza.jpeg',
-    section: 'Pizza'
+    section: 'Pizza',
+    price: 2
   },
   {
     name: 'Burger',
     image: 'images/burger.jpeg',
-    section: 'Sandwiches'
+    section: 'Sandwiches',
+    price: 3
   },
   {
     name: 'Gyro',
     image: 'images/gyro.jpeg',
-    section: 'Sandwiches'
+    section: 'Sandwiches',
+    price: 4.5
   },
   {
     name: 'Shrimp PoBoy',
     image: 'images/Sandwich.jpeg',
-    section: 'Sandwiches'
+    section: 'Sandwiches',
+    price: 6
   },
   {
     name: 'French Fries',
     image: 'images/fries.jpeg',
-    section: 'Sides'
+    section: 'Sides',
+    price: 1
   },
   {
     name: 'Grilled Vegetables',
     image: 'images/grilled-vegetables.jpg',
-    section: 'Sides'
+    section: 'Sides',
+    price: 2
   },
   {
     name: 'Sliced Salmon',
     image: 'images/sliced-salmon.jpg',
-    section: 'Seafood'
+    section: 'Seafood',
+    price: 10
   },
   {
     name: 'Cooked Shrimps',
     image: 'images/cooked-shrimps.jpg',
-    section: 'Seafood'
+    section: 'Seafood',
+    price: 9
   }
 ]
+
+export function formatPrice(price) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  }).format(price)
+}
 
 export const foods = foodList.reduce((result, current) => {
   if (!result[current.section]) {

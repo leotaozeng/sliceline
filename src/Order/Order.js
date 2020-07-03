@@ -6,6 +6,7 @@ import {
   DialogFooter,
   ConfirmButton
 } from '../FoodDialog/FoodDialog'
+import { formatPrice } from '../Data/FoodData'
 
 const OrderStyled = styled.div`
   position: fixed;
@@ -41,9 +42,20 @@ const OrderList = styled.ul`
 `
 
 const OrderItem = styled.li`
+  display: flex;
   padding: 10px 0;
   border-bottom: 1px solid grey;
-  text-indent: 30px;
+
+  .quantity,
+  .price {
+    flex: 1;
+    text-align: center;
+  }
+
+  .name {
+    flex: 2;
+    text-align: center;
+  }
 `
 
 const OrderFooter = styled(DialogFooter)``
@@ -57,7 +69,11 @@ export function Order({ orders }) {
             <OrderTitle>Your Order: </OrderTitle>
             <OrderList>
               {orders.map(order => (
-                <OrderItem>{order.name}</OrderItem>
+                <OrderItem key={order.name}>
+                  <div className="quantity">1</div>
+                  <div className="name">{order.name}</div>
+                  <div className="price">{formatPrice(order.price)}</div>
+                </OrderItem>
               ))}
             </OrderList>
           </>
