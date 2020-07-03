@@ -66,16 +66,36 @@ export const ConfirmButton = styled.button`
   text-align: center;
   font-family: 'Righteous', cursive;
   color: white;
-  background-color: ${pizzaRad};
+  background-color: rgba(${pizzaRad}, 0.8);
+  transition: background-color 0.2s;
   cursor: pointer;
+
+  &:hover {
+    background-color: rgba(${pizzaRad}, 1);
+  }
+
+  &:focus {
+    outline: none;
+  }
 `
 
-export function FoodDialog({ openFood, setOpenFood }) {
+export function FoodDialog({ openFood, setOpenFood, orders, setOrders }) {
+  if (!openFood) return null
+
+  const order = {
+    name: openFood.name
+  }
+
+  function addToOrder() {
+    setOrders([...orders, order])
+    hideDialog()
+  }
+
   function hideDialog() {
     setOpenFood()
   }
 
-  return openFood ? (
+  return (
     <>
       <DialogBackdrop onClick={hideDialog} />
       <Dialog>
@@ -86,9 +106,9 @@ export function FoodDialog({ openFood, setOpenFood }) {
         <DialogContent></DialogContent>
 
         <DialogFooter>
-          <ConfirmButton>Add to order</ConfirmButton>
+          <ConfirmButton onClick={addToOrder}>Add to order</ConfirmButton>
         </DialogFooter>
       </Dialog>
     </>
-  ) : null
+  )
 }

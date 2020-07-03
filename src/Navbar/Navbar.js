@@ -8,7 +8,7 @@ const NavbarStyled = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: ${pizzaRad};
+  background-color: rgb(${pizzaRad});
   padding: 10px;
   width: 100%;
   z-index: 999;

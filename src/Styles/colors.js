@@ -1,1 +1,1 @@
-export const pizzaRad = '#f44336'
+export const pizzaRad = '244, 67, 54'

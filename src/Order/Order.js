@@ -20,14 +20,24 @@ const OrderStyled = styled.div`
   z-index: 998;
 `
 
-const OrderContent = styled(DialogContent)``
+const OrderContent = styled(DialogContent)`
+  .text {
+    text-align: center;
+  }
+`
 
 const OrderFooter = styled(DialogFooter)``
 
-export function Order() {
+export function Order({ orders }) {
   return (
     <OrderStyled>
-      <OrderContent></OrderContent>
+      <OrderContent>
+        <p className="text">
+          {orders.length > 0
+            ? `Found ${orders.length} orders`
+            : 'Your order is looking pretty empty.'}
+        </p>
+      </OrderContent>
 
       <OrderFooter>
         <ConfirmButton>Checkout</ConfirmButton>
