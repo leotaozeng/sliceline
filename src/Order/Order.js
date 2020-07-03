@@ -21,9 +21,29 @@ const OrderStyled = styled.div`
 `
 
 const OrderContent = styled(DialogContent)`
+  padding: 20px;
+
   .text {
     text-align: center;
   }
+`
+
+const OrderTitle = styled.h2`
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid grey;
+  font-size: 18px;
+`
+
+const OrderList = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+`
+
+const OrderItem = styled.li`
+  padding: 10px 0;
+  border-bottom: 1px solid grey;
 `
 
 const OrderFooter = styled(DialogFooter)``
@@ -32,11 +52,18 @@ export function Order({ orders }) {
   return (
     <OrderStyled>
       <OrderContent>
-        <p className="text">
-          {orders.length > 0
-            ? `Found ${orders.length} orders`
-            : 'Your order is looking pretty empty.'}
-        </p>
+        {orders.length > 0 ? (
+          <>
+            <OrderTitle>Your Order: </OrderTitle>
+            <OrderList>
+              {orders.map(order => (
+                <OrderItem>{order.name}</OrderItem>
+              ))}
+            </OrderList>
+          </>
+        ) : (
+          <p className="text">Your order is looking pretty empty.</p>
+        )}
       </OrderContent>
 
       <OrderFooter>
