@@ -30,20 +30,20 @@ const OrderContent = styled(DialogContent)`
 
 const OrderTitle = styled.h2`
   margin: 0;
-  padding: 10px 0;
   border-bottom: 1px solid grey;
+  padding: 10px 0;
   font-size: 18px;
 `
 
 const OrderList = styled.ul`
   margin: 0;
   padding: 0;
-  list-style: none;
 `
 
 const OrderItem = styled.li`
   padding: 10px 0;
   border-bottom: 1px solid grey;
+  text-indent: 30px;
 `
 
 const OrderFooter = styled(DialogFooter)``

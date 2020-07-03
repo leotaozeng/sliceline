@@ -1,5 +1,25 @@
 const foodList = [
   {
+    name: 'Nachos',
+    image: 'images/nachos.jpg',
+    section: 'Appetizers'
+  },
+  {
+    name: 'Antipasto Skewers',
+    image: 'images/antipasto-skewers.jpg',
+    section: 'Appetizers'
+  },
+  {
+    name: 'Pico de Gallo',
+    image: 'images/pico-de-gallo.jpg',
+    section: 'Appetizers'
+  },
+  {
+    name: 'Cucumber Canapes',
+    image: 'images/cucumber-canapes.jpg',
+    section: 'Appetizers'
+  },
+  {
     name: 'Cheese Pizza',
     image: 'images/pizza.png',
     section: 'Pizza'
@@ -22,21 +42,26 @@ const foodList = [
   {
     name: 'Burger',
     image: 'images/burger.jpeg',
-    section: 'Sandwich'
+    section: 'Sandwiches'
   },
   {
     name: 'Gyro',
     image: 'images/gyro.jpeg',
-    section: 'Sandwich'
+    section: 'Sandwiches'
   },
   {
     name: 'Shrimp PoBoy',
-    image: 'images/sandwich.jpeg',
-    section: 'Sandwich'
+    image: 'images/Sandwich.jpeg',
+    section: 'Sandwiches'
   },
   {
     name: 'French Fries',
     image: 'images/fries.jpeg',
+    section: 'Sides'
+  },
+  {
+    name: 'Grilled Vegetables',
+    image: 'images/grilled-vegetables.jpg',
     section: 'Sides'
   },
   {
