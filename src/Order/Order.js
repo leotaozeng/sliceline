@@ -7,6 +7,7 @@ import {
   ConfirmButton
 } from '../FoodDialog/FoodDialog'
 import { formatPrice } from '../Data/FoodData'
+import { getPrice } from '../FoodDialog/FoodDialog'
 
 const OrderStyled = styled.div`
   position: fixed;
@@ -69,10 +70,10 @@ export function Order({ orders }) {
             <OrderTitle>Your Order: </OrderTitle>
             <OrderList>
               {orders.map(order => (
-                <OrderItem key={order.name}>
-                  <div className="quantity">1</div>
+                <OrderItem key={order.name + Math.random().toFixed(2)}>
+                  <div className="quantity">{order.quantity}</div>
                   <div className="name">{order.name}</div>
-                  <div className="price">{formatPrice(order.price)}</div>
+                  <div className="price">{formatPrice(getPrice(order))}</div>
                 </OrderItem>
               ))}
             </OrderList>

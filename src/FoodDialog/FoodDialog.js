@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { FoodLabel } from '../Menu/FoodGrid'
 import { pizzaRad } from '../Styles/colors'
 import { formatPrice } from '../Data/FoodData'
+import { useQuantity } from '../Hooks/useQuantity'
+import { FoodLabel } from '../Menu/FoodGrid'
+import { QuantityInput } from './QuantityInput'
 
 const Dialog = styled.div`
   position: fixed;
@@ -16,7 +18,7 @@ const Dialog = styled.div`
   transform: translate3d(0, -50%, 0);
   border-radius: 0.3rem;
   background-color: white;
-  z-index: 1000;
+  z-index: 1001;
 `
 
 const DialogBanner = styled.header`
@@ -46,6 +48,7 @@ const DialogBackdrop = styled.div`
 
 export const DialogContent = styled.div`
   flex-grow: 1;
+  padding: 0 40px;
   overflow: auto;
 `
 
@@ -57,6 +60,8 @@ export const DialogFooter = styled.footer`
 `
 
 export const ConfirmButton = styled.button`
+  display: flex;
+  justify-content: center;
   width: 200px;
   min-height: 20px;
   line-height: 20px;
@@ -78,18 +83,28 @@ export const ConfirmButton = styled.button`
   &:focus {
     outline: none;
   }
+
+  .price {
+    display: block;
+    width: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 `
 
-export function FoodDialog({ openFood, setOpenFood, orders, setOrders }) {
-  if (!openFood) return null
+export function getPrice(order) {
+  return order.quantity * order.price
+}
 
-  const order = {
-    name: openFood.name,
-    price: openFood.price
-  }
+function FoodDialogContainer({ openFood, setOpenFood, orders, setOrder }) {
+  const quantity = useQuantity(openFood.quantity)
+  const { quantity: value } = quantity
+
+  const order = { ...openFood, quantity: value }
 
   function addToOrder() {
-    setOrders([...orders, order])
+    setOrder([...orders, order])
     hideDialog()
   }
 
@@ -98,21 +113,33 @@ export function FoodDialog({ openFood, setOpenFood, orders, setOrders }) {
   }
 
   return (
-    <>
-      <DialogBackdrop onClick={hideDialog} />
+    <div className="dialog">
       <Dialog>
         <DialogBanner image={openFood.image}>
           <DialogBannerName>{openFood.name}</DialogBannerName>
         </DialogBanner>
 
-        <DialogContent></DialogContent>
+        <DialogContent>
+          <QuantityInput {...quantity} />
+        </DialogContent>
 
         <DialogFooter>
           <ConfirmButton onClick={addToOrder}>
-            Add to order: {formatPrice(openFood.price)}
+            Add to order:{' '}
+            <span className="price">{formatPrice(getPrice(order))}</span>
           </ConfirmButton>
         </DialogFooter>
       </Dialog>
-    </>
+
+      <DialogBackdrop onClick={hideDialog} />
+    </div>
   )
+}
+
+export function FoodDialog(props) {
+  if (!props.openFood) {
+    return null
+  }
+
+  return <FoodDialogContainer {...props} />
 }

@@ -27,37 +27,37 @@ const foodList = [
     name: 'Cheese Pizza',
     image: 'images/pizza.png',
     section: 'Pizza',
-    price: 2
+    price: 3
   },
   {
     name: 'Pepperoni Pizza',
     image: 'images/pizza2.jpeg',
     section: 'Pizza',
-    price: 2
+    price: 3
   },
   {
     name: 'Chicken Pizza',
     image: 'images/chicken-pizza.jpeg',
     section: 'Pizza',
-    price: 2
+    price: 3
   },
   {
     name: 'Veggie Pizza',
     image: 'images/healthy-pizza.jpeg',
     section: 'Pizza',
-    price: 2
+    price: 3
   },
   {
     name: 'Burger',
     image: 'images/burger.jpeg',
     section: 'Sandwiches',
-    price: 3
+    price: 3.5
   },
   {
     name: 'Gyro',
     image: 'images/gyro.jpeg',
     section: 'Sandwiches',
-    price: 4.5
+    price: 2.5
   },
   {
     name: 'Shrimp PoBoy',
@@ -92,10 +92,10 @@ const foodList = [
 ]
 
 export function formatPrice(price) {
-  return new Intl.NumberFormat('en-US', {
+  return new Intl.NumberFormat('zh-CN', {
     style: 'currency',
-    currency: 'USD'
-  }).format(price)
+    currency: 'CNY'
+  }).format(price * 10)
 }
 
 export const foods = foodList.reduce((result, current) => {
