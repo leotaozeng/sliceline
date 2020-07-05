@@ -6,7 +6,6 @@ import { pizzaRad } from '../Styles/colors'
 
 const IncrementContainer = styled(Title)`
   display: flex;
-  justify-content: center;
   align-items: baseline;
 `
 
