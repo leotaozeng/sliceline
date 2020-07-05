@@ -43,31 +43,29 @@ const OrderList = styled.ul`
 `
 
 const OrderItem = styled.li`
-  display: flex;
+  display: grid;
+  grid-template-columns: 20px 150px 60px;
+  justify-content: space-around;
   padding: 10px 0;
   border-bottom: 1px solid grey;
-
-  .quantity,
-  .price {
-    flex: 1;
-    text-align: center;
-  }
-
-  .name {
-    flex: 2;
-    text-align: center;
-  }
 `
 
 const OrderFooter = styled(DialogFooter)``
 
 export function Order({ orders }) {
+  const subtotal = orders.reduce((total, current) => {
+    return total + getPrice(current)
+  }, 0)
+  const tax = subtotal * 0.07
+  const total = subtotal + tax
+
   return (
     <OrderStyled>
       <OrderContent>
         {orders.length > 0 ? (
           <>
             <OrderTitle>Your Order: </OrderTitle>
+
             <OrderList>
               {orders.map(order => (
                 <OrderItem key={order.name + Math.random().toFixed(2)}>
@@ -76,6 +74,23 @@ export function Order({ orders }) {
                   <div className="price">{formatPrice(getPrice(order))}</div>
                 </OrderItem>
               ))}
+              <OrderItem>
+                <div></div>
+                <div className="subtotal">Sub-Total</div>
+                <div className="subtotal-price">{formatPrice(subtotal)}</div>
+              </OrderItem>
+
+              <OrderItem>
+                <div></div>
+                <div className="tax">Tax</div>
+                <div className="tax-price">{formatPrice(tax)}</div>
+              </OrderItem>
+
+              <OrderItem>
+                <div></div>
+                <div className="total">Total</div>
+                <div className="total-price">{formatPrice(total)}</div>
+              </OrderItem>
             </OrderList>
           </>
         ) : (
