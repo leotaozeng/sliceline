@@ -24,7 +24,8 @@ export function Menu({ setOpenFood }) {
                   <div>{food.name}</div>
                   <div>{formatPrice(food.price)}</div>
                 </FoodLabel>
-                <FoodLink image={food.image}></FoodLink>
+
+                <FoodLink image={food.image} />
               </Food>
             ))}
           </FoodGrid>
