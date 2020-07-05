@@ -40,14 +40,24 @@ const OrderTitle = styled.h2`
 const OrderList = styled.ul`
   margin: 0;
   padding: 0;
+  list-style: none;
 `
 
-const OrderItem = styled.li`
+const OrderItemContainer = styled.li`
+  padding: 10px 0;
+  border-bottom: 1px solid grey;
+`
+
+const OrderItem = styled.div`
   display: grid;
   grid-template-columns: 20px 150px 60px;
   justify-content: space-around;
   padding: 10px 0;
-  border-bottom: 1px solid grey;
+`
+
+const DetailItem = styled.div`
+  color: grey;
+  font-size: 10px;
 `
 
 const OrderFooter = styled(DialogFooter)``
@@ -68,29 +78,41 @@ export function Order({ orders }) {
 
             <OrderList>
               {orders.map(order => (
-                <OrderItem key={order.name + Math.random().toFixed(2)}>
-                  <div className="quantity">{order.quantity}</div>
-                  <div className="name">{order.name}</div>
-                  <div className="price">{formatPrice(getPrice(order))}</div>
-                </OrderItem>
+                <OrderItemContainer key={order.name + Math.random().toFixed(2)}>
+                  <OrderItem>
+                    <div className="quantity">{order.quantity}</div>
+                    <div className="name">{order.name}</div>
+                    <div className="price">{formatPrice(getPrice(order))}</div>
+                  </OrderItem>
+
+                  <DetailItem>
+                    {order.toppings
+                      .filter(topping => topping.checked)
+                      .map(item => item.name)
+                      .join(', ')}
+                  </DetailItem>
+                </OrderItemContainer>
               ))}
-              <OrderItem>
-                <div></div>
-                <div className="subtotal">Sub-Total</div>
-                <div className="subtotal-price">{formatPrice(subtotal)}</div>
-              </OrderItem>
 
-              <OrderItem>
-                <div></div>
-                <div className="tax">Tax</div>
-                <div className="tax-price">{formatPrice(tax)}</div>
-              </OrderItem>
+              <OrderItemContainer>
+                <OrderItem>
+                  <div></div>
+                  <div className="subtotal">Sub-Total</div>
+                  <div className="subtotal-price">{formatPrice(subtotal)}</div>
+                </OrderItem>
 
-              <OrderItem>
-                <div></div>
-                <div className="total">Total</div>
-                <div className="total-price">{formatPrice(total)}</div>
-              </OrderItem>
+                <OrderItem>
+                  <div></div>
+                  <div className="tax">Tax</div>
+                  <div className="tax-price">{formatPrice(tax)}</div>
+                </OrderItem>
+
+                <OrderItem>
+                  <div></div>
+                  <div className="total">Total</div>
+                  <div className="total-price">{formatPrice(total)}</div>
+                </OrderItem>
+              </OrderItemContainer>
             </OrderList>
           </>
         ) : (

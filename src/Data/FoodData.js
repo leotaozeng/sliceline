@@ -95,7 +95,7 @@ export function formatPrice(price) {
   return new Intl.NumberFormat('zh-CN', {
     style: 'currency',
     currency: 'CNY'
-  }).format(price * 10)
+  }).format(price)
 }
 
 export const foods = foodList.reduce((result, current) => {

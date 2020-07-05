@@ -32,13 +32,16 @@ export const Food = styled.li`
   }
 `
 
-export const FoodLabel = styled.span`
+export const FoodLabel = styled.h2`
   position: absolute;
   top: 10px;
   left: 10px;
+  margin: 0;
   padding: 5px;
   border-radius: 0.2rem;
   font-family: 'Righteous', cursive;
+  font-size: inherit;
+  font-weight: normal;
   background-color: rgba(255, 255, 255, 0.8);
   z-index: 998;
 `

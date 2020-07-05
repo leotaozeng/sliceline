@@ -22,7 +22,7 @@ export function Menu({ setOpenFood }) {
               <Food key={food.name} onClick={() => setOpenFood(food)}>
                 <FoodLabel>
                   <div>{food.name}</div>
-                  <div>{formatPrice(food.price)}</div>
+                  <div>{formatPrice(food.price * 10)}</div>
                 </FoodLabel>
 
                 <FoodLink image={food.image} />

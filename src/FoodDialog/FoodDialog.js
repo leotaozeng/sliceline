@@ -4,8 +4,11 @@ import styled from 'styled-components'
 import { pizzaRad } from '../Styles/colors'
 import { formatPrice } from '../Data/FoodData'
 import { useQuantity } from '../Hooks/useQuantity'
+import { useToppings } from '../Hooks/useToppings'
+
 import { FoodLabel } from '../Menu/FoodGrid'
 import { QuantityInput } from './QuantityInput'
+import { Toppings } from './Toppings'
 
 const Dialog = styled.div`
   position: fixed;
@@ -45,6 +48,8 @@ const DialogBackdrop = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
 `
+
+const pricePerTopping = 5
 
 export const DialogContent = styled.div`
   flex-grow: 1;
@@ -94,14 +99,21 @@ export const ConfirmButton = styled.button`
 `
 
 export function getPrice(order) {
-  return order.quantity * order.price
+  const totalToppings = order.toppings.filter(topping => {
+    return topping.checked
+  }).length
+
+  return order.quantity * order.price * 10 + totalToppings * pricePerTopping
 }
 
 function FoodDialogContainer({ openFood, setOpenFood, orders, setOrder }) {
   const quantity = useQuantity(openFood.quantity)
   const { quantity: value } = quantity
 
-  const order = { ...openFood, quantity: value }
+  const toppings = useToppings(openFood.toppings)
+  const { toppings: toppingList } = toppings
+
+  const order = { ...openFood, quantity: value, toppings: toppingList }
 
   function addToOrder() {
     setOrder([...orders, order])
@@ -110,6 +122,10 @@ function FoodDialogContainer({ openFood, setOpenFood, orders, setOrder }) {
 
   function hideDialog() {
     setOpenFood()
+  }
+
+  function showToppings(food) {
+    return food.section === 'Pizza'
   }
 
   return (
@@ -121,6 +137,14 @@ function FoodDialogContainer({ openFood, setOpenFood, orders, setOrder }) {
 
         <DialogContent>
           <QuantityInput {...quantity} />
+
+          {/* A topping section */}
+          {showToppings(openFood) && (
+            <>
+              <h3>Would you like some toppings?</h3>
+              <Toppings {...toppings} />
+            </>
+          )}
         </DialogContent>
 
         <DialogFooter>
