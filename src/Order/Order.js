@@ -45,7 +45,11 @@ const OrderList = styled.ul`
 
 const OrderItemContainer = styled.li`
   padding: 10px 0;
-  border-bottom: 1px solid grey;
+  border-bottom: dashed 1px #9da3a6;
+
+  &:hover {
+    background-color: #eee;
+  }
 `
 
 const OrderItem = styled.div`

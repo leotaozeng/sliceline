@@ -19,7 +19,7 @@ export const Food = styled.li`
   overflow: hidden;
   cursor: pointer;
   box-shadow: 0 0.125rem 0.25rem grey;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s;
 
   &:hover {
     box-shadow: 0 5px 10px grey;
@@ -54,5 +54,5 @@ export const FoodLink = styled.a`
   background: ${({ image }) => `url(${image}) no-repeat center/cover`};
   filter: contrast(75%);
   box-sizing: border-box;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s;
 `

@@ -20,7 +20,7 @@ const IncrementButton = styled.button`
   cursor: pointer;
   outline: none;
   background-color: transparent;
-  transition: all 0.2s;
+  transition: all 0.3s;
 
   ${props =>
     props.disabled &&

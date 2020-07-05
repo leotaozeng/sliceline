@@ -78,7 +78,7 @@ export const ConfirmButton = styled.button`
   font-family: 'Righteous', cursive;
   color: white;
   background-color: rgb(${pizzaRad});
-  transition: all 0.2s;
+  transition: all 0.3s;
   cursor: pointer;
 
   &:hover {
