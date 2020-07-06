@@ -77,6 +77,7 @@ export const ConfirmButton = styled.button`
   border-radius: 5px;
   padding: 10px;
   text-align: center;
+  font-size: 14px;
   font-family: 'Righteous', cursive;
   color: white;
   background-color: rgb(${pizzaRad});
