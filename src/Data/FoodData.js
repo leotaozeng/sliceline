@@ -27,25 +27,25 @@ const foodList = [
     name: 'Cheese Pizza',
     image: 'images/pizza.png',
     section: 'Pizza',
-    price: 3
+    price: 4.4
   },
   {
     name: 'Pepperoni Pizza',
     image: 'images/pizza2.jpeg',
     section: 'Pizza',
-    price: 3
+    price: 4.2
   },
   {
     name: 'Chicken Pizza',
     image: 'images/chicken-pizza.jpeg',
     section: 'Pizza',
-    price: 3
+    price: 4
   },
   {
     name: 'Veggie Pizza',
     image: 'images/healthy-pizza.jpeg',
     section: 'Pizza',
-    price: 3
+    price: 4.7
   },
   {
     name: 'Burger',
@@ -63,7 +63,7 @@ const foodList = [
     name: 'Shrimp PoBoy',
     image: 'images/Sandwich.jpeg',
     section: 'Sandwiches',
-    price: 6
+    price: 4
   },
   {
     name: 'French Fries',
@@ -81,13 +81,37 @@ const foodList = [
     name: 'Sliced Salmon',
     image: 'images/sliced-salmon.jpg',
     section: 'Seafood',
-    price: 10
+    price: 20
   },
   {
     name: 'Cooked Shrimps',
     image: 'images/cooked-shrimps.jpg',
     section: 'Seafood',
-    price: 9
+    price: 19
+  },
+  {
+    name: 'Steak',
+    image: 'images/steak.jpeg',
+    section: 'Main Course',
+    price: 17.8
+  },
+  {
+    name: 'Paella',
+    image: 'images/paella.jpg',
+    section: 'Main Course',
+    price: 15
+  },
+  {
+    name: 'Pisto',
+    image: 'images/pisto.jpg',
+    section: 'Main Course',
+    price: 13
+  },
+  {
+    name: 'Fried Rice',
+    image: 'images/fried-rice.jpg',
+    section: 'Main Course',
+    price: 13.5
   },
   {
     name: 'Soda',
