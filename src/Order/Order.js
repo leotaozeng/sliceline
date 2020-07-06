@@ -89,12 +89,17 @@ export function Order({ orders }) {
                     <div className="price">{formatPrice(getPrice(order))}</div>
                   </OrderItem>
 
-                  <DetailItem>
-                    {order.toppings
-                      .filter(topping => topping.checked)
-                      .map(item => item.name)
-                      .join(', ')}
-                  </DetailItem>
+                  {order.toppings.filter(topping => topping.checked).length >
+                    0 && (
+                    <DetailItem>
+                      {order.toppings
+                        .filter(topping => topping.checked)
+                        .map(item => item.name)
+                        .join(', ')}
+                    </DetailItem>
+                  )}
+
+                  {order.choice && <DetailItem>{order.choice}</DetailItem>}
                 </OrderItemContainer>
               ))}
 

@@ -5,7 +5,7 @@ import { foods, formatPrice } from '../Data/FoodData'
 import { Food, FoodGrid, FoodLink, FoodLabel } from './FoodGrid'
 
 const MenuStyled = styled.div`
-  margin: 0 400px 50px 20px;
+  margin: 0 400px 60px 20px;
 `
 
 export function Menu({ setOpenFood }) {

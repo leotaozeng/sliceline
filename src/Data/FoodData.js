@@ -88,6 +88,13 @@ const foodList = [
     image: 'images/cooked-shrimps.jpg',
     section: 'Seafood',
     price: 9
+  },
+  {
+    name: 'Soda',
+    image: 'images/soda.jpg',
+    section: 'Drink',
+    price: 0.5,
+    choices: ['Coke', 'Sprite', 'Root Beer', 'Orange', 'Cider', 'Wine']
   }
 ]
 

@@ -1,14 +1,16 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { pizzaRad } from '../Styles/colors'
 import { formatPrice } from '../Data/FoodData'
 import { useQuantity } from '../Hooks/useQuantity'
 import { useToppings } from '../Hooks/useToppings'
+import { useChoice } from '../Hooks/useChoice'
 
 import { FoodLabel } from '../Menu/FoodGrid'
 import { QuantityInput } from './QuantityInput'
 import { Toppings } from './Toppings'
+import { Choices } from './Choices'
 
 const Dialog = styled.div`
   position: fixed;
@@ -81,6 +83,18 @@ export const ConfirmButton = styled.button`
   transition: all 0.3s;
   cursor: pointer;
 
+  ${props =>
+    props.disabled &&
+    css`
+      opacity: 0.5;
+      background-color: grey;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: grey !important;
+      }
+    `}
+
   &:hover {
     background-color: #992337;
   }
@@ -107,13 +121,21 @@ export function getPrice(order) {
 }
 
 function FoodDialogContainer({ openFood, setOpenFood, orders, setOrder }) {
+  // quantity hook
   const quantity = useQuantity(openFood.quantity)
   const { quantity: value } = quantity
 
   const toppings = useToppings(openFood.toppings)
   const { toppings: toppingList } = toppings
 
-  const order = { ...openFood, quantity: value, toppings: toppingList }
+  const selectedRadio = useChoice(openFood.choice)
+
+  const order = {
+    ...openFood,
+    quantity: value,
+    toppings: toppingList,
+    choice: selectedRadio.choice
+  }
 
   function addToOrder() {
     setOrder([...orders, order])
@@ -128,6 +150,10 @@ function FoodDialogContainer({ openFood, setOpenFood, orders, setOrder }) {
     return food.section === 'Pizza'
   }
 
+  function showChoices(food) {
+    return food.section === 'Drink'
+  }
+
   return (
     <div className="dialog">
       <Dialog>
@@ -139,16 +165,18 @@ function FoodDialogContainer({ openFood, setOpenFood, orders, setOrder }) {
           <QuantityInput {...quantity} />
 
           {/* A topping section */}
-          {showToppings(openFood) && (
-            <>
-              <h3>Would you like some toppings?</h3>
-              <Toppings {...toppings} />
-            </>
+          {showToppings(openFood) && <Toppings {...toppings} />}
+
+          {showChoices(openFood) && (
+            <Choices {...openFood} {...selectedRadio} />
           )}
         </DialogContent>
 
         <DialogFooter>
-          <ConfirmButton onClick={addToOrder}>
+          <ConfirmButton
+            onClick={addToOrder}
+            disabled={openFood.choices && !selectedRadio.choice}
+          >
             Add to order:{' '}
             <span className="price">{formatPrice(getPrice(order))}</span>
           </ConfirmButton>
