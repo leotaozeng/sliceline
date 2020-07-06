@@ -50,6 +50,7 @@ export const FoodLink = styled.a`
   display: block;
   width: 100%;
   height: 100%;
+  border-radius: 0.3rem;
   padding: 10px;
   background: ${({ image }) => `url(${image}) no-repeat center/cover`};
   filter: contrast(75%);

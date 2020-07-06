@@ -61,7 +61,7 @@ const foodList = [
   },
   {
     name: 'Shrimp PoBoy',
-    image: 'images/Sandwich.jpeg',
+    image: 'images/sandwich.jpeg',
     section: 'Sandwiches',
     price: 4
   },
