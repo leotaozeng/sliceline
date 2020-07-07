@@ -11,9 +11,11 @@ const NavbarStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  height: 49px;
   background-color: rgb(${pizzaRad});
   padding: 10px;
-  width: 100%;
+  box-sizing: border-box;
   z-index: 999;
 `
 
@@ -25,6 +27,14 @@ const Logo = styled(Title)`
 
 const UserStatus = styled.div`
   margin-right: 30px;
+  font-size: 14px;
+  color: white;
+`
+
+const UserName = styled.span`
+  margin-right: 15px;
+  color: white;
+  font-size: 14px;
 `
 
 const LoginButton = styled.button`
@@ -63,11 +73,15 @@ const LoginButton = styled.button`
   }
 `
 
+const LogoutButton = styled(LoginButton)`
+  margin-right: 0px;
+`
+
 const SignupButton = styled(LoginButton)`
   margin-right: 0px;
 `
 
-export function Navbar(auth) {
+export function Navbar({ loggedInUser, login, logout }) {
   return (
     <NavbarStyled>
       <Logo>
@@ -78,8 +92,19 @@ export function Navbar(auth) {
       </Logo>
 
       <UserStatus>
-        <LoginButton onClick={auth.login}>Log In</LoginButton>
-        <SignupButton>Sign Up</SignupButton>
+        {loggedInUser === 'loading' ? (
+          'Loading...'
+        ) : loggedInUser ? (
+          <>
+            <UserName>{loggedInUser.displayName}</UserName>
+            <LogoutButton onClick={logout}>Log Out</LogoutButton>
+          </>
+        ) : (
+          <>
+            <LoginButton onClick={login}>Log In</LoginButton>
+            <SignupButton>Sign Up</SignupButton>
+          </>
+        )}
       </UserStatus>
     </NavbarStyled>
   )

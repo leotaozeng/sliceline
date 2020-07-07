@@ -11,15 +11,6 @@ import { useAuth } from './Hooks/useAuth'
 import { useOrders } from './Hooks/useOrders'
 import { useOpenFood } from './Hooks/useOpenFood'
 
-// import { auth, googleAuthProvider } from './firebase.config'
-
-// auth
-//   .signInWithPopup(googleAuthProvider)
-//   .then(result => {
-//     console.log(result)
-//   })
-//   .catch(error => {})
-
 function App() {
   const auth = useAuth()
   const orders = useOrders()
