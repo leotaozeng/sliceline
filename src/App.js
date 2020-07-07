@@ -7,18 +7,29 @@ import { Order } from './Order/Order'
 import { Navbar } from './Navbar/Navbar'
 import { Banner } from './Banner/Banner'
 
+import { useAuth } from './Hooks/useAuth'
 import { useOrders } from './Hooks/useOrders'
 import { useOpenFood } from './Hooks/useOpenFood'
 
+// import { auth, googleAuthProvider } from './firebase.config'
+
+// auth
+//   .signInWithPopup(googleAuthProvider)
+//   .then(result => {
+//     console.log(result)
+//   })
+//   .catch(error => {})
+
 function App() {
-  const openFood = useOpenFood()
+  const auth = useAuth()
   const orders = useOrders()
+  const openFood = useOpenFood()
 
   return (
     <>
       <GlobalStyle />
       <FoodDialog {...openFood} {...orders} />
-      <Navbar />
+      <Navbar {...auth} />
       <Banner />
       <Menu {...openFood} />
       <Order {...orders} />

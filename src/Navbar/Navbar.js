@@ -8,6 +8,9 @@ const NavbarStyled = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: rgb(${pizzaRad});
   padding: 10px;
   width: 100%;
@@ -20,7 +23,51 @@ const Logo = styled(Title)`
   text-shadow: 1px 1px 4px #380502;
 `
 
-export function Navbar() {
+const UserStatus = styled.div`
+  margin-right: 30px;
+`
+
+const LoginButton = styled.button`
+  position: relative;
+  min-height: 20px;
+  margin-right: 15px;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 10px;
+  font-size: 14px;
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 50%;
+    height: 2px;
+    background-color: white;
+    opacity: 0;
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+      margin-bottom: -16.5px;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+`
+
+const SignupButton = styled(LoginButton)`
+  margin-right: 0px;
+`
+
+export function Navbar(auth) {
   return (
     <NavbarStyled>
       <Logo>
@@ -29,6 +76,11 @@ export function Navbar() {
           🍕
         </span>
       </Logo>
+
+      <UserStatus>
+        <LoginButton onClick={auth.login}>Log In</LoginButton>
+        <SignupButton>Sign Up</SignupButton>
+      </UserStatus>
     </NavbarStyled>
   )
 }

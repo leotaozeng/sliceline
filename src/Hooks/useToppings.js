@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const toppings = [
+const toppingList = [
   'Extra Cheese',
   'Pepperoni',
   'Sausage',
@@ -15,7 +15,7 @@ const toppings = [
 ]
 
 function getDefaultToppings() {
-  const result = toppings.map(topping => {
+  const result = toppingList.map(topping => {
     return {
       name: topping,
       checked: false
@@ -32,7 +32,6 @@ export function useToppings(defaultToppings) {
 
   function toggleTopping(index) {
     const newToppings = [...toppings]
-
     newToppings[index].checked = !newToppings[index].checked
 
     setToppings(newToppings)
