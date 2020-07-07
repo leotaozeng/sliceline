@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+// Creating a custom hook
 export function useQuantity(defaultQuantity) {
   const [quantity, setQuantity] = useState(defaultQuantity || 1)
 
@@ -7,14 +8,12 @@ export function useQuantity(defaultQuantity) {
     // Convert a string to a number
     const num = +event.target.value
 
-    // If not greater than or equal to one then set the quantity to one
-    if (!(num >= 1)) {
-      setQuantity(1)
-
+    if (num > 1) {
+      setQuantity(num)
       return false
     }
 
-    setQuantity(num)
+    setQuantity(1)
   }
 
   return { quantity, setQuantity, handleChange }

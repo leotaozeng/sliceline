@@ -40,6 +40,7 @@ const QuantityLabel = styled.label`
   display: block;
 `
 
+// Styling a regular HTML input
 const QuantityInputStyled = styled.input`
   width: 40px;
   border: none;
@@ -69,11 +70,13 @@ export function QuantityInput({ quantity, setQuantity, handleChange }) {
       <DecrementButton disabled={quantity === 1} onClick={decreaseQuantity}>
         <span>-</span>
       </DecrementButton>
+
       <QuantityInputStyled
         id="input-quantity"
         value={quantity}
         onChange={handleChange}
       />
+
       <IncrementButton onClick={increaseQuantity}>
         <span>+</span>
       </IncrementButton>
