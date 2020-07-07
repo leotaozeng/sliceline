@@ -66,12 +66,20 @@ const DetailItem = styled.div`
 
 const OrderFooter = styled(DialogFooter)``
 
-export function Order({ orders }) {
+export function Order({ orders, login, loggedInUser }) {
   const subtotal = orders.reduce((total, current) => {
     return total + getPrice(current)
   }, 0)
   const tax = subtotal * 0.07
   const total = subtotal + tax
+
+  function checkAuthenticated() {
+    if (loggedInUser) {
+      console.log('logged in')
+    } else {
+      login()
+    }
+  }
 
   return (
     <OrderStyled>
@@ -130,7 +138,7 @@ export function Order({ orders }) {
       </OrderContent>
 
       <OrderFooter>
-        <ConfirmButton>Checkout</ConfirmButton>
+        <ConfirmButton onClick={checkAuthenticated}>Checkout</ConfirmButton>
       </OrderFooter>
     </OrderStyled>
   )

@@ -178,7 +178,7 @@ function FoodDialogContainer({ openFood, setOpenFood, orders, setOrder }) {
             onClick={addToOrder}
             disabled={openFood.choices && !selectedRadio.choice}
           >
-            Add to order:{' '}
+            Add to order:
             <span className="price">{formatPrice(getPrice(order))}</span>
           </ConfirmButton>
         </DialogFooter>
