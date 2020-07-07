@@ -5,43 +5,31 @@ export function useAuth() {
   const [authenticated, SetAuthenticated] = useState()
 
   function login() {
+    // Set the authenticated status
     SetAuthenticated('loading')
 
     auth
       .signInWithPopup(googleAuthProvider)
-      .then(function (result) {
-        console.log(result)
-      })
-      .catch(function (error) {
-        SetAuthenticated(null)
-      })
+      .then(result => console.log(result))
+      .catch(() => SetAuthenticated(null))
   }
 
   function logout() {
+    // Set the authenticated status
+    SetAuthenticated('loading')
+
     auth
       .signOut()
-      .then(() => {
-        // Sign-out successful.
-        SetAuthenticated(null)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+      .then(() => SetAuthenticated(null))
+      .catch(error => console.log(error))
   }
 
   useEffect(() => {
+    SetAuthenticated('loading')
+
     auth.onAuthStateChanged(
-      user => {
-        if (user) {
-          // User is signed in.
-          SetAuthenticated(user)
-        }
-      },
-      error => {
-        // An error happened.
-        console.log(123, error)
-        SetAuthenticated(null)
-      }
+      user => (user ? SetAuthenticated(user) : SetAuthenticated(null)),
+      () => SetAuthenticated(null)
     )
   }, [])
 
