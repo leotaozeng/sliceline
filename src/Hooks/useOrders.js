@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export function useOrders() {
-  const [orders, setOrder] = useState([])
+  const [orders, setOrders] = useState([])
 
-  return { orders, setOrder }
+  return { orders, setOrders }
 }

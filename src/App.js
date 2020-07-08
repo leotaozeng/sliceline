@@ -23,7 +23,7 @@ function App() {
       <Navbar {...auth} />
       <Banner />
       <Menu {...openFood} />
-      <Order {...orders} {...auth} />
+      <Order {...openFood} {...orders} {...auth} />
     </>
   )
 }

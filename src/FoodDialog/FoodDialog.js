@@ -121,31 +121,19 @@ export function getPrice(order) {
   return order.quantity * order.price * 10 + totalToppings * pricePerTopping
 }
 
-function FoodDialogContainer({ openFood, setOpenFood, orders, setOrder }) {
+function FoodDialogContainer({ openFood, setOpenFood, orders, setOrders }) {
   // quantity hook
   const quantity = useQuantity(openFood.quantity)
-  const { quantity: value } = quantity
-
   const toppings = useToppings(openFood.toppings)
-  const { toppings: toppingList } = toppings
-
   const selectedRadio = useChoice(openFood.choice)
 
   const order = {
     ...openFood,
-    quantity: value,
-    toppings: toppingList,
+    quantity: quantity.quantity,
+    toppings: toppings.toppings,
     choice: selectedRadio.choice
   }
-
-  function addToOrder() {
-    setOrder([...orders, order])
-    hideDialog()
-  }
-
-  function hideDialog() {
-    setOpenFood()
-  }
+  const isEditing = openFood.index >= 0
 
   function showToppings(food) {
     return food.section === 'Pizza'
@@ -153,6 +141,22 @@ function FoodDialogContainer({ openFood, setOpenFood, orders, setOrder }) {
 
   function showChoices(food) {
     return food.section === 'Drink'
+  }
+
+  function hideDialog() {
+    setOpenFood()
+  }
+
+  function editOrder() {
+    orders[openFood.index] = order
+
+    setOrders([...orders])
+    hideDialog()
+  }
+
+  function addToOrder() {
+    setOrders([...orders, order])
+    hideDialog()
   }
 
   return (
@@ -175,10 +179,10 @@ function FoodDialogContainer({ openFood, setOpenFood, orders, setOrder }) {
 
         <DialogFooter>
           <ConfirmButton
-            onClick={addToOrder}
+            onClick={isEditing ? editOrder : addToOrder}
             disabled={openFood.choices && !selectedRadio.choice}
           >
-            Add to order:
+            {isEditing ? 'Update order:' : 'Add to order:'}
             <span className="price">{formatPrice(getPrice(order))}</span>
           </ConfirmButton>
         </DialogFooter>
