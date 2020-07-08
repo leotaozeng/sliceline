@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+export const SectionName = styled.h1``
+
 export const FoodGrid = styled.ul`
   margin: 0;
   padding: 0;
@@ -25,9 +27,9 @@ export const Food = styled.li`
     box-shadow: 0 5px 10px grey;
 
     > a {
+      padding: 0px;
       filter: contrast(100%);
       transform: scale(1.1);
-      cursor: pointer;
     }
   }
 `
@@ -52,8 +54,8 @@ export const FoodLink = styled.a`
   height: 100%;
   border-radius: 0.3rem;
   padding: 10px;
+  box-sizing: border-box;
   background: url(${props => props.image}) no-repeat center/cover;
   filter: contrast(75%);
-  box-sizing: border-box;
   transition: all 0.4s;
 `

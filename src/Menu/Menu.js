@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { foods, formatPrice } from '../Data/FoodData'
-import { Food, FoodGrid, FoodLink, FoodLabel } from './FoodGrid'
+import { SectionName, Food, FoodGrid, FoodLink, FoodLabel } from './FoodGrid'
 
 const MenuStyled = styled.div`
   margin: 0 400px 60px 20px;
@@ -15,7 +15,7 @@ export function Menu({ setOpenFood }) {
       {/* value => foods */}
       {Object.entries(foods).map(([sectionName, foods]) => (
         <section key={sectionName}>
-          <h1>{sectionName}</h1>
+          <SectionName>{sectionName}</SectionName>
 
           <FoodGrid>
             {foods.map(food => (
