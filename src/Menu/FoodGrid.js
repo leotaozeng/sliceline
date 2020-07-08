@@ -11,7 +11,7 @@ export const FoodGrid = styled.ul`
   gap: 20px;
 `
 
-export const Food = styled.li`
+export const FoodGridItem = styled.li`
   position: relative;
   width: 100%;
   height: 120px;
