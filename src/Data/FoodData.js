@@ -3,7 +3,8 @@ const foodList = [
     name: 'Nachos',
     image: '/images/nachos.jpg',
     section: 'Appetizers',
-    price: 3
+    price: 3,
+    quantity: 2
   },
   {
     name: 'Antipasto Skewers',

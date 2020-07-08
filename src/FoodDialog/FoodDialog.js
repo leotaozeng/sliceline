@@ -12,7 +12,7 @@ import { QuantityInput } from './QuantityInput'
 import { Toppings } from './Toppings'
 import { Choices } from './Choices'
 
-const Dialog = styled.div`
+const Dialog = styled.form`
   position: fixed;
   top: 50%;
   left: calc(50% - 250px);
@@ -127,6 +127,7 @@ function FoodDialogContainer({ openFood, setOpenFood, orders, setOrders }) {
   const toppings = useToppings(openFood.toppings)
   const selectedRadio = useChoice(openFood.choice)
 
+  // New order || 完整的新订单
   const order = {
     ...openFood,
     quantity: quantity.quantity,
@@ -161,7 +162,13 @@ function FoodDialogContainer({ openFood, setOpenFood, orders, setOrders }) {
 
   return (
     <div className="dialog">
-      <Dialog>
+      <Dialog
+        autoComplete="off"
+        onSubmit={event => {
+          isEditing ? editOrder() : addToOrder()
+          event.preventDefault()
+        }}
+      >
         <DialogBanner image={openFood.image}>
           <DialogBannerName>{openFood.name}</DialogBannerName>
         </DialogBanner>
@@ -179,7 +186,7 @@ function FoodDialogContainer({ openFood, setOpenFood, orders, setOrders }) {
 
         <DialogFooter>
           <ConfirmButton
-            onClick={isEditing ? editOrder : addToOrder}
+            type="submit"
             disabled={openFood.choices && !selectedRadio.choice}
           >
             {isEditing ? 'Update order:' : 'Add to order:'}

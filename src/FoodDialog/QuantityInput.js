@@ -11,6 +11,8 @@ const IncrementContainer = styled(Title)`
 
 const IncrementButton = styled.button`
   width: 24px;
+  height: 24px;
+  line-height: 24px;
   margin: 0 10px;
   border: 1px solid rgb(${pizzaRad});
   border-radius: 0.2rem;
@@ -52,10 +54,6 @@ const QuantityInputStyled = styled.input`
 
 export function QuantityInput({ quantity, setQuantity, handleChange }) {
   function decreaseQuantity() {
-    if (quantity === 1) {
-      return false
-    }
-
     setQuantity(--quantity)
   }
 
@@ -67,17 +65,29 @@ export function QuantityInput({ quantity, setQuantity, handleChange }) {
     <IncrementContainer>
       <QuantityLabel htmlFor="input-quantity">Quantity:</QuantityLabel>
 
-      <DecrementButton disabled={quantity === 1} onClick={decreaseQuantity}>
+      <DecrementButton
+        type="button"
+        disabled={quantity <= 1}
+        onClick={decreaseQuantity}
+      >
         <span>-</span>
       </DecrementButton>
 
       <QuantityInputStyled
+        required
+        min="1"
+        max="100"
         id="input-quantity"
+        type="number"
         value={quantity}
         onChange={handleChange}
       />
 
-      <IncrementButton onClick={increaseQuantity}>
+      <IncrementButton
+        type="button"
+        disabled={quantity >= 100}
+        onClick={increaseQuantity}
+      >
         <span>+</span>
       </IncrementButton>
     </IncrementContainer>

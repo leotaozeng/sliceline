@@ -65,22 +65,14 @@ const OrderItem = styled.div`
   padding: 10px 0;
 
   .quantity,
-  .price {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .quantity,
   .btn-delete {
     text-align: center;
   }
 
-  .btn-delete {
-    cursor: pointer;
-  }
-
   .price {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     text-align: right;
   }
 `
@@ -100,6 +92,7 @@ export function Order({ orders, setOrders, setOpenFood, login, loggedInUser }) {
   const tax = subtotal * 0.07
   const total = subtotal + tax
 
+  // Use the splice method to remove an element from the orders array
   function deleteOrder(index) {
     const newOrders = [...orders]
     newOrders.splice(index, 1)
@@ -107,7 +100,7 @@ export function Order({ orders, setOrders, setOpenFood, login, loggedInUser }) {
     setOrders(newOrders)
   }
 
-  function setOrderIndex(order, index) {
+  function setOpenFoodIndex(order, index) {
     setOpenFood({ ...order, index })
   }
 
@@ -144,17 +137,15 @@ export function Order({ orders, setOrders, setOpenFood, login, loggedInUser }) {
                 <OrderItemContainer
                   editable
                   key={order.name + Math.random().toFixed(2)}
-                  onClick={() => setOrderIndex(order, index)}
+                  onClick={() => setOpenFoodIndex(order, index)}
                 >
                   <OrderItem>
-                    <div className="quantity" title={order.quantity}>
-                      {order.quantity}
-                    </div>
+                    <div className="quantity">{order.quantity}</div>
                     <div className="name">{order.name}</div>
                     <div
                       className="btn-delete"
-                      onClick={e => {
-                        e.stopPropagation()
+                      onClick={event => {
+                        event.stopPropagation()
                         deleteOrder(index)
                       }}
                     >

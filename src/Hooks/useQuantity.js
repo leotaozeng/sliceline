@@ -5,15 +5,15 @@ export function useQuantity(defaultQuantity) {
   const [quantity, setQuantity] = useState(defaultQuantity || 1)
 
   function handleChange(event) {
-    // Convert a string to a number
-    const num = +event.target.value
+    const value = event.target.value
 
-    if (num > 1) {
-      setQuantity(num)
+    if (value === '') {
+      setQuantity(1)
       return false
     }
 
-    setQuantity(1)
+    // Convert a string value into an integer
+    setQuantity(parseInt(event.target.value))
   }
 
   return { quantity, setQuantity, handleChange }
