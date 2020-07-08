@@ -52,7 +52,7 @@ export const FoodLink = styled.a`
   height: 100%;
   border-radius: 0.3rem;
   padding: 10px;
-  background: ${({ image }) => `url(${image}) no-repeat center/cover`};
+  background: url(${props => props.image}) no-repeat center/cover;
   filter: contrast(75%);
   box-sizing: border-box;
   transition: all 0.4s;
