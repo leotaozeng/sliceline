@@ -86,7 +86,14 @@ const DetailItem = styled.div`
 
 const OrderFooter = styled(DialogFooter)``
 
-export function Order({ orders, setOrders, setOpenFood, login, loggedInUser }) {
+export function Order({
+  orders,
+  setOrders,
+  setOpenFood,
+  setOpenOrderDialog,
+  login,
+  loggedInUser
+}) {
   const subtotal = orders.reduce((total, current) => {
     return total + getPrice(current)
   }, 0)
@@ -139,8 +146,6 @@ export function Order({ orders, setOrders, setOpenFood, login, loggedInUser }) {
       buyerEmail: loggedInUser.email,
       buyerOrders: newOrders
     })
-
-    ordersRef.on('child_added', () => setOrders([]))
   }
 
   function setOpenFoodIndex(order, index) {
@@ -162,8 +167,8 @@ export function Order({ orders, setOrders, setOpenFood, login, loggedInUser }) {
 
   function checkAuthenticated() {
     if (loggedInUser) {
-      console.log(loggedInUser)
       sendOrder()
+      setOpenOrderDialog(true)
     } else {
       login()
     }
@@ -246,7 +251,12 @@ export function Order({ orders, setOrders, setOpenFood, login, loggedInUser }) {
       </OrderContent>
 
       <OrderFooter>
-        <ConfirmButton onClick={checkAuthenticated}>Checkout</ConfirmButton>
+        <ConfirmButton
+          disabled={orders.length === 0}
+          onClick={checkAuthenticated}
+        >
+          Checkout
+        </ConfirmButton>
       </OrderFooter>
     </OrderStyled>
   )

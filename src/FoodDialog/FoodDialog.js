@@ -12,20 +12,6 @@ import { QuantityInput } from './QuantityInput'
 import { Toppings } from './Toppings'
 import { Choices } from './Choices'
 
-const Dialog = styled.form`
-  position: fixed;
-  top: 50%;
-  left: calc(50% - 250px);
-  display: flex;
-  flex-direction: column;
-  width: 500px;
-  height: calc(100vh - 100px);
-  transform: translate3d(0, -50%, 0);
-  border-radius: 0.3rem;
-  background-color: white;
-  z-index: 1001;
-`
-
 const DialogBanner = styled.header`
   min-height: 200px;
   margin-bottom: 20px;
@@ -41,7 +27,23 @@ const DialogBannerName = styled(FoodLabel)`
   padding: 5px 40px;
 `
 
-const DialogBackdrop = styled.div`
+const pricePerTopping = 5
+
+export const Dialog = styled.form`
+  position: fixed;
+  top: 50%;
+  left: calc(50% - 250px);
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: calc(100vh - 150px);
+  transform: translate3d(0, -50%, 0);
+  border-radius: 0.3rem;
+  background-color: white;
+  z-index: 1001;
+`
+
+export const DialogBackdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -50,8 +52,6 @@ const DialogBackdrop = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
 `
-
-const pricePerTopping = 5
 
 export const DialogContent = styled.div`
   flex-grow: 1;
@@ -161,7 +161,7 @@ function FoodDialogContainer({ openFood, setOpenFood, orders, setOrders }) {
   }
 
   return (
-    <div className="dialog">
+    <div className="dialog-food">
       <Dialog
         autoComplete="off"
         onSubmit={event => {
