@@ -3,6 +3,7 @@ import * as firebase from 'firebase/app'
 
 import 'firebase/analytics'
 import 'firebase/auth'
+import 'firebase/database'
 
 // Firebase project configuration
 const firebaseConfig = {
@@ -19,5 +20,7 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)
 
+// Get a reference to the database service
+export const realtimeDB = firebase.database()
 export const auth = firebase.auth()
 export const googleAuthProvider = new firebase.auth.GoogleAuthProvider()

@@ -9,6 +9,8 @@ import {
 import { formatPrice } from '../Data/FoodData'
 import { getPrice } from '../FoodDialog/FoodDialog'
 
+import { realtimeDB } from '../firebase.config'
+
 const OrderStyled = styled.div`
   position: fixed;
   top: 49px;
@@ -100,6 +102,47 @@ export function Order({ orders, setOrders, setOpenFood, login, loggedInUser }) {
     setOrders(newOrders)
   }
 
+  function sendOrder() {
+    const ordersRef = realtimeDB.ref(`orders/${loggedInUser.uid}`)
+
+    const newOrders = orders.map(order => {
+      // 将对象转换成一个只包含 key 的数组
+      const keysArr = Object.keys(order)
+
+      return keysArr.reduce((accumulator, key) => {
+        if (!order[key]) {
+          // Get rid of the value which is equal to false
+          // Such as undefined, null, empty string
+          // return {}
+          return accumulator
+        }
+
+        if (key === 'toppings') {
+          return {
+            ...accumulator,
+            [key]: order[key]
+              .filter(topping => topping.checked)
+              .map(item => item.name)
+          }
+        }
+
+        return {
+          ...accumulator,
+          [key]: order[key]
+        }
+      }, {})
+    })
+
+    ordersRef.push().set({
+      buyerId: loggedInUser.uid,
+      buyerName: loggedInUser.displayName,
+      buyerEmail: loggedInUser.email,
+      buyerOrders: newOrders
+    })
+
+    ordersRef.on('child_added', () => setOrders([]))
+  }
+
   function setOpenFoodIndex(order, index) {
     setOpenFood({ ...order, index })
   }
@@ -119,7 +162,8 @@ export function Order({ orders, setOrders, setOpenFood, login, loggedInUser }) {
 
   function checkAuthenticated() {
     if (loggedInUser) {
-      console.log('logged in')
+      console.log(loggedInUser)
+      sendOrder()
     } else {
       login()
     }
