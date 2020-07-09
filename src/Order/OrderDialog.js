@@ -13,7 +13,7 @@ function OrderDialogContainer({ setOrders, setOpenOrderDialog, loggedInUser }) {
   function hideDialog() {
     const ordersRef = realtimeDB.ref(`orders/${loggedInUser.uid}`)
 
-    ordersRef.on('child_added', data => {
+    ordersRef.on('child_added', () => {
       setOrders([])
       setOpenOrderDialog()
     })
