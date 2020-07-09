@@ -33,8 +33,6 @@ const UserStatus = styled.div`
 
 const UserName = styled.span`
   margin-right: 15px;
-  color: white;
-  font-size: 14px;
 `
 
 const LoginButton = styled.button`
