@@ -15,7 +15,7 @@ function OrderDialogContainer({ setOrders, setOpenOrderDialog, loggedInUser }) {
 
     ordersRef.on('child_added', () => {
       setOrders([])
-      setOpenOrderDialog()
+      setOpenOrderDialog(false)
     })
   }
 

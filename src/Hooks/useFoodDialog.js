@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export function useOpenFood() {
-  const [openFood, setOpenFood] = useState()
+  const [openFoodDialog, setOpenFoodDialog] = useState()
 
-  return { openFood, setOpenFood }
+  return { openFoodDialog, setOpenFoodDialog }
 }

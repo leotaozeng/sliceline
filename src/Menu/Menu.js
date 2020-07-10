@@ -14,7 +14,7 @@ const MenuStyled = styled.div`
   margin: 0 400px 60px 20px;
 `
 
-export function Menu({ setOpenFood }) {
+export function Menu({ setOpenFoodDialog }) {
   return (
     <MenuStyled>
       {/* key => sectionName */}
@@ -25,7 +25,10 @@ export function Menu({ setOpenFood }) {
 
           <FoodGrid>
             {foods.map(food => (
-              <FoodGridItem key={food.name} onClick={() => setOpenFood(food)}>
+              <FoodGridItem
+                key={food.name}
+                onClick={() => setOpenFoodDialog(food)}
+              >
                 <FoodLabel>
                   <div>{food.name}</div>
                   <div>{formatPrice(food.price * 10)}</div>

@@ -1,6 +1,5 @@
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import * as firebase from 'firebase/app'
-import * as firebaseui from 'firebaseui'
 
 import 'firebase/analytics'
 import 'firebase/auth'
@@ -21,7 +20,22 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)
 
+// Configure FirebaseUI.
+export const uiConfig = {
+  // Popup signin flow rather than redirect flow.
+  signInFlow: 'popup',
+  // We will display Google and Facebook as auth providers.
+  signInOptions: [
+    firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.GithubAuthProvider.PROVIDER_ID,
+    {
+      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      requireDisplayName: true
+    }
+  ]
+}
+
 export const realtimeDB = firebase.database() // Get a reference to the database service
 export const auth = firebase.auth()
 export const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
-export const ui = new firebaseui.auth.AuthUI(auth) // Initialize the FirebaseUI Widget using Firebase.

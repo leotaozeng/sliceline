@@ -121,20 +121,25 @@ export function getPrice(order) {
   return order.quantity * order.price * 10 + totalToppings * pricePerTopping
 }
 
-function FoodDialogContainer({ openFood, setOpenFood, orders, setOrders }) {
+function FoodDialogContainer({
+  orders,
+  openFoodDialog,
+  setOrders,
+  setOpenFoodDialog
+}) {
   // quantity hook
-  const quantity = useQuantity(openFood.quantity)
-  const toppings = useToppings(openFood.toppings)
-  const selectedRadio = useChoice(openFood.choice)
+  const quantity = useQuantity(openFoodDialog.quantity)
+  const toppings = useToppings(openFoodDialog.toppings)
+  const selectedRadio = useChoice(openFoodDialog.choice)
 
   // New order || 完整的新订单
   const order = {
-    ...openFood,
+    ...openFoodDialog,
     quantity: quantity.quantity,
     toppings: toppings.toppings,
     choice: selectedRadio.choice
   }
-  const isEditing = openFood.index >= 0
+  const isEditing = openFoodDialog.index >= 0
 
   function showToppings(food) {
     return food.section === 'Pizza'
@@ -145,11 +150,11 @@ function FoodDialogContainer({ openFood, setOpenFood, orders, setOrders }) {
   }
 
   function hideDialog() {
-    setOpenFood()
+    setOpenFoodDialog(false)
   }
 
   function editOrder() {
-    orders[openFood.index] = order
+    orders[openFoodDialog.index] = order
 
     setOrders([...orders])
     hideDialog()
@@ -169,25 +174,25 @@ function FoodDialogContainer({ openFood, setOpenFood, orders, setOrders }) {
           event.preventDefault()
         }}
       >
-        <DialogBanner image={openFood.image}>
-          <DialogBannerName>{openFood.name}</DialogBannerName>
+        <DialogBanner image={openFoodDialog.image}>
+          <DialogBannerName>{openFoodDialog.name}</DialogBannerName>
         </DialogBanner>
 
         <DialogContent>
           <QuantityInput {...quantity} />
 
           {/* A topping section */}
-          {showToppings(openFood) && <Toppings {...toppings} />}
+          {showToppings(openFoodDialog) && <Toppings {...toppings} />}
 
-          {showChoices(openFood) && (
-            <Choices {...openFood} {...selectedRadio} />
+          {showChoices(openFoodDialog) && (
+            <Choices {...openFoodDialog} {...selectedRadio} />
           )}
         </DialogContent>
 
         <DialogFooter>
           <ConfirmButton
             type="submit"
-            disabled={openFood.choices && !selectedRadio.choice}
+            disabled={openFoodDialog.choices && !selectedRadio.choice}
           >
             {isEditing ? 'Update order:' : 'Add to order:'}
             <span className="price">{formatPrice(getPrice(order))}</span>
@@ -201,7 +206,7 @@ function FoodDialogContainer({ openFood, setOpenFood, orders, setOrders }) {
 }
 
 export function FoodDialog(props) {
-  if (!props.openFood) {
+  if (!props.openFoodDialog) {
     return null
   }
 

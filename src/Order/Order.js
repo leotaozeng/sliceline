@@ -88,11 +88,11 @@ const OrderFooter = styled(DialogFooter)``
 
 export function Order({
   orders,
+  loggedInUser,
   setOrders,
-  setOpenFood,
-  setOpenOrderDialog,
-  login,
-  loggedInUser
+  setOpenAuthDialog,
+  setOpenFoodDialog,
+  setOpenOrderDialog
 }) {
   const subtotal = orders.reduce((total, current) => {
     return total + getPrice(current)
@@ -148,8 +148,8 @@ export function Order({
     })
   }
 
-  function setOpenFoodIndex(order, index) {
-    setOpenFood({ ...order, index })
+  function setOpenFoodDialogIndex(order, index) {
+    setOpenFoodDialog({ ...order, index })
   }
 
   function hasCheckedToppings(toppings) {
@@ -170,7 +170,7 @@ export function Order({
       sendOrder()
       setOpenOrderDialog(true)
     } else {
-      login()
+      setOpenAuthDialog(true)
     }
   }
 
@@ -186,7 +186,7 @@ export function Order({
                 <OrderItemContainer
                   editable
                   key={order.name + Math.random().toFixed(2)}
-                  onClick={() => setOpenFoodIndex(order, index)}
+                  onClick={() => setOpenFoodDialogIndex(order, index)}
                 >
                   <OrderItem>
                     <div className="quantity">{order.quantity}</div>

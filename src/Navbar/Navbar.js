@@ -38,7 +38,6 @@ const UserName = styled.span`
 const LoginButton = styled.button`
   position: relative;
   min-height: 20px;
-  margin-right: 15px;
   border: none;
   border-radius: 0.3rem;
   padding: 10px;
@@ -75,11 +74,11 @@ const LogoutButton = styled(LoginButton)`
   margin-right: 0px;
 `
 
-const SignupButton = styled(LoginButton)`
-  margin-right: 0px;
-`
+export function Navbar({ loggedInUser, setOpenAuthDialog, logout }) {
+  function showDialog() {
+    setOpenAuthDialog(true)
+  }
 
-export function Navbar({ loggedInUser, login, logout }) {
   return (
     <NavbarStyled>
       <Logo>
@@ -98,10 +97,7 @@ export function Navbar({ loggedInUser, login, logout }) {
             <LogoutButton onClick={logout}>Log Out</LogoutButton>
           </>
         ) : (
-          <>
-            <LoginButton onClick={login}>Log In</LoginButton>
-            <SignupButton>Sign Up</SignupButton>
-          </>
+          <LoginButton onClick={showDialog}>Sign In</LoginButton>
         )}
       </UserStatus>
     </NavbarStyled>
