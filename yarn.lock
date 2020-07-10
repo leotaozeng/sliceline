@@ -5021,10 +5021,10 @@ firebase@^7.15.5:
     "@firebase/storage" "0.3.37"
     "@firebase/util" "0.2.50"
 
-firebaseui@^4.5.1:
-  version "4.5.1"
-  resolved "https://registry.npm.taobao.org/firebaseui/download/firebaseui-4.5.1.tgz#6d7e5d154c8b27cf8823b2df318c7a9f6fd89236"
-  integrity sha1-bX5dFUyLJ8+II7LfMYx6n2/YkjY=
+firebaseui@^4.1.0:
+  version "4.5.2"
+  resolved "https://registry.npm.taobao.org/firebaseui/download/firebaseui-4.5.2.tgz#d53e6197c739aa6c3ef0457c2b4c218fba1c9b70"
+  integrity sha1-1T5hl8c5qmw+8EV8K0whj7ocm3A=
   dependencies:
     dialog-polyfill "^0.4.7"
     material-design-lite "^1.2.0"
@@ -9133,6 +9133,13 @@ react-error-overlay@^6.0.7:
   version "6.0.7"
   resolved "https://registry.npm.taobao.org/react-error-overlay/download/react-error-overlay-6.0.7.tgz#1dcfb459ab671d53f660a991513cb2f0a0553108"
   integrity sha1-Hc+0WatnHVP2YKmRUTyy8KBVMQg=
+
+react-firebaseui@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.npm.taobao.org/react-firebaseui/download/react-firebaseui-4.1.0.tgz#fbd8381432b53b58ce56ee86df81e2a6e40af7b6"
+  integrity sha1-+9g4FDK1O1jOVu6G34HipuQK97Y=
+  dependencies:
+    firebaseui "^4.1.0"
 
 react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   version "16.13.1"

@@ -7,9 +7,9 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "firebase": "^7.15.5",
-    "firebaseui": "^4.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-firebaseui": "^4.1.0",
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.1"
   },
