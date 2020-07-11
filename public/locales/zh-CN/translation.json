@@ -1,0 +1,25 @@
+{
+  "menu": {
+    "appetizers": {
+      "title": "开胃菜"
+    },
+    "pizza": {
+      "title": "披萨"
+    },
+    "sandwiches": {
+      "title": "三明治"
+    },
+    "sides": {
+      "title": "配菜"
+    },
+    "seafood": {
+      "title": "海鲜"
+    },
+    "entrees": {
+      "title": "主菜"
+    },
+    "drink": {
+      "title": "饮料"
+    }
+  }
+}

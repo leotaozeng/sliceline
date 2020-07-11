@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import { GlobalStyle } from './Styles/GlobalStyle'
 import { AuthDialog } from './AuthDialog/AuthDialog'
@@ -14,7 +14,14 @@ import { useOrders } from './Hooks/useOrders'
 import { useOpenFood } from './Hooks/useFoodDialog'
 import { useOrderDialog } from './Hooks/useOrderDialog'
 
-import './firebaseui-styling.global.css'
+// loading component for suspense fallback
+function Loader() {
+  return (
+    <div className="App">
+      <div>loading...</div>
+    </div>
+  )
+}
 
 function App() {
   const auth = useAuth()
@@ -23,16 +30,16 @@ function App() {
   const orderDialog = useOrderDialog()
 
   return (
-    <>
+    <Suspense fallback={<Loader />}>
       <GlobalStyle />
-      <AuthDialog {...auth} />
-      <FoodDialog {...foodDialog} {...orders} />
       <Navbar {...auth} />
       <Banner />
       <Menu {...foodDialog} />
       <Order {...foodDialog} {...orders} {...orderDialog} {...auth} />
       <OrderDialog {...orders} {...orderDialog} {...auth} />
-    </>
+      <FoodDialog {...foodDialog} {...orders} />
+      <AuthDialog {...auth} />
+    </Suspense>
   )
 }
 

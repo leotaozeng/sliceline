@@ -1,9 +1,10 @@
 .firebaseui-container {
   margin-top: 40px !important;
+  min-width: 360px !important;
 }
 
 .firebaseui-idp-button {
-  min-width: 300px !important;
+  min-width: 310px !important;
   min-height: 45px !important;
   border-radius: 0.2rem !important;
 }

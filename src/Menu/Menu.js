@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 import { foods, formatPrice } from '../Data/FoodData'
@@ -15,13 +16,15 @@ const MenuStyled = styled.div`
 `
 
 export function Menu({ setOpenFoodDialog }) {
+  const { t } = useTranslation()
+
   return (
     <MenuStyled>
       {/* key => sectionName */}
       {/* value => foods */}
       {Object.entries(foods).map(([sectionName, foods]) => (
         <section key={sectionName}>
-          <SectionName>{sectionName}</SectionName>
+          <SectionName>{t(`menu.${sectionName}.title`)}</SectionName>
 
           <FoodGrid>
             {foods.map(food => (

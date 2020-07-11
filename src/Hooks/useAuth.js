@@ -1,19 +1,9 @@
 import { useEffect, useState } from 'react'
-import { auth, googleAuthProvider } from '../firebase.config'
+import { auth } from '../firebase.config'
 
 export function useAuth() {
   const [authenticated, setAuthenticated] = useState()
   const [openAuthDialog, setOpenAuthDialog] = useState()
-
-  function login() {
-    // Set the authenticated status
-    setAuthenticated('loading')
-
-    auth
-      .signInWithPopup(googleAuthProvider)
-      .then(result => console.log(result))
-      .catch(() => setAuthenticated(null))
-  }
 
   function logout() {
     // Set the authenticated status
@@ -29,7 +19,14 @@ export function useAuth() {
     setAuthenticated('loading')
 
     auth.onAuthStateChanged(
-      user => (user ? setAuthenticated(user) : setAuthenticated(null)),
+      user => {
+        if (user) {
+          setOpenAuthDialog(false)
+          setAuthenticated(user)
+        } else {
+          setAuthenticated(null)
+        }
+      },
       () => setAuthenticated(null)
     )
   }, [])
@@ -38,7 +35,6 @@ export function useAuth() {
     openAuthDialog,
     setOpenAuthDialog,
     loggedInUser: authenticated,
-    login,
     logout
   }
 }

@@ -5,11 +5,16 @@ import styled from 'styled-components'
 import { uiConfig, auth } from '../firebase.config'
 import { Dialog, DialogBackdrop, DialogContent } from '../FoodDialog/FoodDialog'
 
+const AuthFormDialog = styled(Dialog)`
+  height: auto;
+`
+
 const AuthDialogContent = styled(DialogContent)`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 40px;
 `
 
 const AuthDialogTitle = styled.h2`
@@ -29,7 +34,7 @@ export function AuthDialogContainer({ setOpenAuthDialog }) {
 
   return (
     <div className="dialog-auth">
-      <Dialog
+      <AuthFormDialog
         onSubmit={event => {
           hideDialog()
           event.preventDefault()
@@ -40,7 +45,7 @@ export function AuthDialogContainer({ setOpenAuthDialog }) {
           <AuthDialogSubtitle>Let's create your account.</AuthDialogSubtitle>
           <FirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
         </AuthDialogContent>
-      </Dialog>
+      </AuthFormDialog>
 
       <DialogBackdrop onClick={hideDialog} />
     </div>

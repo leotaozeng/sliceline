@@ -1,5 +1,6 @@
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import * as firebase from 'firebase/app'
+import * as firebaseui from 'firebaseui'
 
 import 'firebase/analytics'
 import 'firebase/auth'
@@ -29,13 +30,17 @@ export const uiConfig = {
     firebase.auth.TwitterAuthProvider.PROVIDER_ID,
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.GithubAuthProvider.PROVIDER_ID,
-    {
-      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      requireDisplayName: true
-    }
-  ]
+    firebase.auth.EmailAuthProvider.PROVIDER_ID
+  ],
+  callbacks: {
+    // Avoid redirects after sign-in.
+    signInSuccessWithAuthResult: () => false
+  },
+  // Terms of service url.
+  tosUrl: 'https://react-sliceline.firebaseapp.com/',
+  privacyPolicyUrl: 'https://react-sliceline.firebaseapp.com/',
+  credentialHelper: firebaseui.auth.CredentialHelper.NONE
 }
 
 export const realtimeDB = firebase.database() // Get a reference to the database service
 export const auth = firebase.auth()
-export const googleAuthProvider = new firebase.auth.GoogleAuthProvider()

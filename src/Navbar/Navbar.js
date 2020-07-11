@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 
 import { pizzaRad } from '../Styles/colors'
 import { Title } from '../Styles/title'
@@ -74,7 +75,17 @@ const LogoutButton = styled(LoginButton)`
   margin-right: 0px;
 `
 
+const LanguageButton = styled(LoginButton)`
+  margin-right: 15px;
+`
+
 export function Navbar({ loggedInUser, setOpenAuthDialog, logout }) {
+  const { i18n } = useTranslation()
+
+  function changeLanguage(language) {
+    i18n.changeLanguage(language)
+  }
+
   function showDialog() {
     setOpenAuthDialog(true)
   }
@@ -93,11 +104,19 @@ export function Navbar({ loggedInUser, setOpenAuthDialog, logout }) {
           'Loading...'
         ) : loggedInUser ? (
           <>
+            <LanguageButton onClick={() => changeLanguage('zh-CN')}>
+              中文
+            </LanguageButton>
             <UserName>{loggedInUser.displayName}</UserName>
             <LogoutButton onClick={logout}>Log Out</LogoutButton>
           </>
         ) : (
-          <LoginButton onClick={showDialog}>Sign In</LoginButton>
+          <>
+            <LanguageButton onClick={() => changeLanguage('zh-CN')}>
+              中文
+            </LanguageButton>
+            <LoginButton onClick={showDialog}>Sign In</LoginButton>
+          </>
         )}
       </UserStatus>
     </NavbarStyled>

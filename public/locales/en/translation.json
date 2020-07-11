@@ -1,0 +1,25 @@
+{
+  "menu": {
+    "appetizers": {
+      "title": "Appetizers"
+    },
+    "pizza": {
+      "title": "Pizza"
+    },
+    "sandwiches": {
+      "title": "Sandwiches"
+    },
+    "sides": {
+      "title": "Sides"
+    },
+    "seafood": {
+      "title": "Seafood"
+    },
+    "entrees": {
+      "title": "Entrées"
+    },
+    "drink": {
+      "title": "Drink"
+    }
+  }
+}
