@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { useTranslation } from 'react-i18next'
 
 import { pizzaRad } from '../Styles/colors'
 import { formatPrice } from '../Data/FoodData'
@@ -15,8 +16,8 @@ import { Choices } from './Choices'
 const DialogBanner = styled.header`
   min-height: 200px;
   margin-bottom: 20px;
-  border-top-left-radius: 0.3rem;
-  border-top-right-radius: 0.3rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
   background: ${({ image }) => `url(${image}) no-repeat center/cover`};
 `
 
@@ -27,8 +28,6 @@ const DialogBannerName = styled(FoodLabel)`
   padding: 5px 40px;
 `
 
-const pricePerTopping = 5
-
 export const Dialog = styled.form`
   position: fixed;
   top: 50%;
@@ -36,9 +35,8 @@ export const Dialog = styled.form`
   display: flex;
   flex-direction: column;
   width: 500px;
-  height: calc(100vh - 150px);
   transform: translate3d(0, -50%, 0);
-  border-radius: 0.3rem;
+  border-radius: 0.5rem;
   background-color: white;
   z-index: 1001;
 `
@@ -54,8 +52,7 @@ export const DialogBackdrop = styled.div`
 `
 
 export const DialogContent = styled.div`
-  flex-grow: 1;
-  padding: 0 40px;
+  padding: 0 40px 80px;
   overflow: auto;
 `
 
@@ -114,6 +111,7 @@ export const ConfirmButton = styled.button`
 `
 
 export function getPrice(order) {
+  const pricePerTopping = 5
   const totalToppings = order.toppings.filter(topping => {
     return topping.checked
   }).length
@@ -127,6 +125,8 @@ function FoodDialogContainer({
   setOrders,
   setOpenFoodDialog
 }) {
+  const { t } = useTranslation()
+
   // quantity hook
   const quantity = useQuantity(openFoodDialog.quantity)
   const toppings = useToppings(openFoodDialog.toppings)
@@ -142,11 +142,11 @@ function FoodDialogContainer({
   const isEditing = openFoodDialog.index >= 0
 
   function showToppings(food) {
-    return food.section === 'Pizza'
+    return food.section === 'pizza'
   }
 
   function showChoices(food) {
-    return food.section === 'Drink'
+    return food.section === 'drink'
   }
 
   function hideDialog() {
@@ -194,7 +194,7 @@ function FoodDialogContainer({
             type="submit"
             disabled={openFoodDialog.choices && !selectedRadio.choice}
           >
-            {isEditing ? 'Update order:' : 'Add to order:'}
+            {isEditing ? t('dialog.updateOrder') : t('dialog.addToOrder')}
             <span className="price">{formatPrice(getPrice(order))}</span>
           </ConfirmButton>
         </DialogFooter>

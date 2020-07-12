@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { useTranslation } from 'react-i18next'
 
 import {
   DialogContent,
@@ -25,6 +26,7 @@ const OrderStyled = styled.div`
 `
 
 const OrderContent = styled(DialogContent)`
+  flex-grow: 1;
   padding: 20px;
 
   .text {
@@ -33,6 +35,7 @@ const OrderContent = styled(DialogContent)`
 `
 
 const OrderTitle = styled.h2`
+  height: 24px;
   margin: 0;
   border-bottom: 1px solid grey;
   padding: 10px 0;
@@ -94,10 +97,11 @@ export function Order({
   setOpenFoodDialog,
   setOpenOrderDialog
 }) {
+  const { t } = useTranslation()
+
   const subtotal = orders.reduce((total, current) => {
     return total + getPrice(current)
   }, 0)
-
   const tax = subtotal * 0.07
   const total = subtotal + tax
 
@@ -179,7 +183,7 @@ export function Order({
       <OrderContent>
         {orders.length > 0 ? (
           <>
-            <OrderTitle>Your Order: </OrderTitle>
+            <OrderTitle>{t('order.title')} </OrderTitle>
 
             <OrderList>
               {orders.map((order, index) => (
@@ -218,7 +222,7 @@ export function Order({
               <OrderItemContainer>
                 <OrderItem>
                   <div></div>
-                  <div className="subtotal">Sub-Total</div>
+                  <div className="subtotal">{t('order.subtotal')}</div>
                   <div></div>
                   <div className="price" title={formatPrice(subtotal)}>
                     {formatPrice(subtotal)}
@@ -227,7 +231,7 @@ export function Order({
 
                 <OrderItem>
                   <div></div>
-                  <div className="tax">Tax</div>
+                  <div className="tax">{t('order.tax')}</div>
                   <div></div>
                   <div className="price" title={formatPrice(tax)}>
                     {formatPrice(tax)}
@@ -236,7 +240,7 @@ export function Order({
 
                 <OrderItem>
                   <div></div>
-                  <div className="total">Total</div>
+                  <div className="total">{t('order.total')}</div>
                   <div></div>
                   <div className="price" title={formatPrice(total)}>
                     {formatPrice(total)}
@@ -246,7 +250,7 @@ export function Order({
             </OrderList>
           </>
         ) : (
-          <p className="text">Your order is looking pretty empty.</p>
+          <p className="text">{t('order.message')}</p>
         )}
       </OrderContent>
 
@@ -255,7 +259,7 @@ export function Order({
           disabled={orders.length === 0}
           onClick={checkAuthenticated}
         >
-          Checkout
+          {t('order.checkout')}
         </ConfirmButton>
       </OrderFooter>
     </OrderStyled>

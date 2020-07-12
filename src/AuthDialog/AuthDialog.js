@@ -1,6 +1,7 @@
 import React from 'react'
-import { FirebaseAuth } from 'react-firebaseui'
 import styled from 'styled-components'
+import { FirebaseAuth } from 'react-firebaseui'
+import { useTranslation } from 'react-i18next'
 
 import { uiConfig, auth } from '../firebase.config'
 import { Dialog, DialogBackdrop, DialogContent } from '../FoodDialog/FoodDialog'
@@ -28,6 +29,8 @@ const AuthDialogSubtitle = styled.p`
 `
 
 export function AuthDialogContainer({ setOpenAuthDialog }) {
+  const { t } = useTranslation()
+
   function hideDialog() {
     setOpenAuthDialog(false)
   }
@@ -41,8 +44,8 @@ export function AuthDialogContainer({ setOpenAuthDialog }) {
         }}
       >
         <AuthDialogContent>
-          <AuthDialogTitle>Start Your Order Now</AuthDialogTitle>
-          <AuthDialogSubtitle>Let's create your account.</AuthDialogSubtitle>
+          <AuthDialogTitle>{t('dialog.title')}</AuthDialogTitle>
+          <AuthDialogSubtitle>{t('dialog.subtitle')}</AuthDialogSubtitle>
           <FirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
         </AuthDialogContent>
       </AuthFormDialog>

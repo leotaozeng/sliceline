@@ -1,18 +1,18 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { useTranslation } from 'react-i18next'
 
 import { Title } from '../Styles/title'
 import { pizzaRad } from '../Styles/colors'
 
 const IncrementContainer = styled(Title)`
   display: flex;
-  align-items: baseline;
+  align-items: center;
 `
 
 const IncrementButton = styled.button`
   width: 24px;
   height: 24px;
-  line-height: 24px;
   margin: 0 10px;
   border: 1px solid rgb(${pizzaRad});
   border-radius: 0.2rem;
@@ -53,6 +53,8 @@ const QuantityInputStyled = styled.input`
 `
 
 export function QuantityInput({ quantity, setQuantity, handleChange }) {
+  const { t } = useTranslation()
+
   function decreaseQuantity() {
     setQuantity(--quantity)
   }
@@ -63,7 +65,9 @@ export function QuantityInput({ quantity, setQuantity, handleChange }) {
 
   return (
     <IncrementContainer>
-      <QuantityLabel htmlFor="input-quantity">Quantity:</QuantityLabel>
+      <QuantityLabel htmlFor="input-quantity">
+        {t('dialog.quantity')}
+      </QuantityLabel>
 
       <DecrementButton
         type="button"

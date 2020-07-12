@@ -16,11 +16,7 @@ import { useOrderDialog } from './Hooks/useOrderDialog'
 
 // loading component for suspense fallback
 function Loader() {
-  return (
-    <div className="App">
-      <div>loading...</div>
-    </div>
-  )
+  return <div>loading...</div>
 }
 
 function App() {

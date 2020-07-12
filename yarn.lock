@@ -9187,6 +9187,11 @@ react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=
 
+react-loading@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.npm.taobao.org/react-loading/download/react-loading-2.0.3.tgz#e8138fb0c3e4674e481b320802ac7048ae14ffb9"
+  integrity sha1-6BOPsMPkZ05IGzIIAqxwSK4U/7k=
+
 react-scripts@3.4.1:
   version "3.4.1"
   resolved "https://registry.npm.taobao.org/react-scripts/download/react-scripts-3.4.1.tgz?cache=0&sync_timestamp=1584749436260&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-scripts%2Fdownload%2Freact-scripts-3.4.1.tgz#f551298b5c71985cc491b9acf3c8e8c0ae3ada0a"

@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const SectionName = styled.h1``
+export const SectionName = styled.h1`
+  height: 30px;
+`
 
 export const FoodGrid = styled.ul`
   margin: 0;

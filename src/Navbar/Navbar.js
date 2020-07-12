@@ -80,7 +80,7 @@ const LanguageButton = styled(LoginButton)`
 `
 
 export function Navbar({ loggedInUser, setOpenAuthDialog, logout }) {
-  const { i18n } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   function changeLanguage(language) {
     i18n.changeLanguage(language)
@@ -104,18 +104,30 @@ export function Navbar({ loggedInUser, setOpenAuthDialog, logout }) {
           'Loading...'
         ) : loggedInUser ? (
           <>
-            <LanguageButton onClick={() => changeLanguage('zh-CN')}>
-              中文
+            <LanguageButton
+              onClick={() => {
+                i18n.language === 'en'
+                  ? changeLanguage('zh-CN')
+                  : changeLanguage('en')
+              }}
+            >
+              {i18n.language === 'en' ? '中文' : 'English'}
             </LanguageButton>
             <UserName>{loggedInUser.displayName}</UserName>
-            <LogoutButton onClick={logout}>Log Out</LogoutButton>
+            <LogoutButton onClick={logout}>{t('navbar.logout')}</LogoutButton>
           </>
         ) : (
           <>
-            <LanguageButton onClick={() => changeLanguage('zh-CN')}>
-              中文
+            <LanguageButton
+              onClick={() =>
+                i18n.language === 'en'
+                  ? changeLanguage('zh-CN')
+                  : changeLanguage('en')
+              }
+            >
+              {i18n.language === 'en' ? '中文' : 'English'}
             </LanguageButton>
-            <LoginButton onClick={showDialog}>Sign In</LoginButton>
+            <LoginButton onClick={showDialog}>{t('navbar.login')}</LoginButton>
           </>
         )}
       </UserStatus>
