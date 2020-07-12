@@ -1,16 +1,18 @@
 {
   "navbar": {
-    "login": "登录",
-    "logout": "退出"
+    "button-login": "登录",
+    "button-logout": "退出"
   },
   "menu": {
-    "appetizers": "开胃菜",
-    "pizza": "披萨",
-    "sandwiches": "三明治",
-    "sides": "配菜",
-    "seafood": "海鲜",
-    "entrees": "主菜",
-    "drink": "饮料"
+    "section": {
+      "appetizers": "开胃菜",
+      "pizza": "披萨",
+      "sandwiches": "三明治",
+      "sides": "配菜",
+      "seafood": "海鲜",
+      "entrees": "主菜",
+      "drink": "饮料"
+    }
   },
   "order": {
     "message": "再忙，也要记得吃饭哟~",
@@ -18,13 +20,13 @@
     "subtotal": "小计",
     "tax": "税",
     "total": "总额",
-    "checkout": "去结算"
+    "button-checkout": "去结算"
   },
   "dialog": {
     "title": "立即开始点单",
     "subtitle": "创建帐户",
-    "quantity": "数量:",
-    "addToOrder": "添加到订单:",
-    "updateOrder": "更新订单:"
+    "quantity-label": "数量:",
+    "button-add": "添加到订单:",
+    "button-update": "更新订单:"
   }
 }

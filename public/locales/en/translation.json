@@ -1,16 +1,18 @@
 {
   "navbar": {
-    "login": "Sign in",
-    "logout": "Log out"
+    "button-login": "Sign in",
+    "button-logout": "Log out"
   },
   "menu": {
-    "appetizers": "Appetizers",
-    "pizza": "Pizza",
-    "sandwiches": "Sandwiches",
-    "sides": "Sides",
-    "seafood": "Seafood",
-    "entrees": "Entrées",
-    "drink": "Drink"
+    "section": {
+      "appetizers": "Appetizers",
+      "pizza": "Pizza",
+      "sandwiches": "Sandwiches",
+      "sides": "Sides",
+      "seafood": "Seafood",
+      "entrees": "Entrées",
+      "drink": "Drink"
+    }
   },
   "order": {
     "message": "Your order is looking pretty empty.",
@@ -18,13 +20,13 @@
     "subtotal": "Sub-Total",
     "tax": "Tax",
     "total": "Total",
-    "checkout": "Checkout"
+    "button-checkout": "Checkout"
   },
   "dialog": {
     "title": "Start Your Order Now",
     "subtitle": "Let's create your account.",
-    "quantity": "Quantity:",
-    "addToOrder": "Add to order:",
-    "updateOrder": "Update order:"
+    "quantity-label": "Quantity:",
+    "button-add": "Add to order:",
+    "button-update": "Update order:"
   }
 }

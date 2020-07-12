@@ -52,7 +52,7 @@ export const DialogBackdrop = styled.div`
 `
 
 export const DialogContent = styled.div`
-  padding: 0 40px 80px;
+  padding: 0 40px 100px;
   overflow: auto;
 `
 
@@ -194,7 +194,7 @@ function FoodDialogContainer({
             type="submit"
             disabled={openFoodDialog.choices && !selectedRadio.choice}
           >
-            {isEditing ? t('dialog.updateOrder') : t('dialog.addToOrder')}
+            {isEditing ? t('dialog.button-update') : t('dialog.button-add')}
             <span className="price">{formatPrice(getPrice(order))}</span>
           </ConfirmButton>
         </DialogFooter>

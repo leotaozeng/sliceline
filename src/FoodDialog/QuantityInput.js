@@ -66,7 +66,7 @@ export function QuantityInput({ quantity, setQuantity, handleChange }) {
   return (
     <IncrementContainer>
       <QuantityLabel htmlFor="input-quantity">
-        {t('dialog.quantity')}
+        {t('dialog.quantity-label')}
       </QuantityLabel>
 
       <DecrementButton

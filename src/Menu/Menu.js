@@ -24,7 +24,7 @@ export function Menu({ setOpenFoodDialog }) {
       {/* value => foods */}
       {Object.entries(foods).map(([sectionName, foods]) => (
         <section key={sectionName}>
-          <SectionName>{t(`menu.${sectionName}`)}</SectionName>
+          <SectionName>{t(`menu.section.${sectionName}`)}</SectionName>
 
           <FoodGrid>
             {foods.map(food => (

@@ -36,7 +36,7 @@ const UserName = styled.span`
   margin-right: 15px;
 `
 
-const LoginButton = styled.button`
+const ButtonLogin = styled.button`
   position: relative;
   min-height: 20px;
   border: none;
@@ -71,15 +71,16 @@ const LoginButton = styled.button`
   }
 `
 
-const LogoutButton = styled(LoginButton)`
+const ButtonLogout = styled(ButtonLogin)`
   margin-right: 0px;
 `
 
-const LanguageButton = styled(LoginButton)`
+const ButtonLanguage = styled(ButtonLogin)`
   margin-right: 15px;
 `
 
 export function Navbar({ loggedInUser, setOpenAuthDialog, logout }) {
+  // return the translation function t(), and the i18n object
   const { t, i18n } = useTranslation()
 
   function changeLanguage(language) {
@@ -104,7 +105,7 @@ export function Navbar({ loggedInUser, setOpenAuthDialog, logout }) {
           'Loading...'
         ) : loggedInUser ? (
           <>
-            <LanguageButton
+            <ButtonLanguage
               onClick={() => {
                 i18n.language === 'en'
                   ? changeLanguage('zh-CN')
@@ -112,13 +113,17 @@ export function Navbar({ loggedInUser, setOpenAuthDialog, logout }) {
               }}
             >
               {i18n.language === 'en' ? '中文' : 'English'}
-            </LanguageButton>
+            </ButtonLanguage>
+
             <UserName>{loggedInUser.displayName}</UserName>
-            <LogoutButton onClick={logout}>{t('navbar.logout')}</LogoutButton>
+
+            <ButtonLogout onClick={logout}>
+              {t('navbar.button-logout')}
+            </ButtonLogout>
           </>
         ) : (
           <>
-            <LanguageButton
+            <ButtonLanguage
               onClick={() =>
                 i18n.language === 'en'
                   ? changeLanguage('zh-CN')
@@ -126,8 +131,11 @@ export function Navbar({ loggedInUser, setOpenAuthDialog, logout }) {
               }
             >
               {i18n.language === 'en' ? '中文' : 'English'}
-            </LanguageButton>
-            <LoginButton onClick={showDialog}>{t('navbar.login')}</LoginButton>
+            </ButtonLanguage>
+
+            <ButtonLogin onClick={showDialog}>
+              {t('navbar.button-login')}
+            </ButtonLogin>
           </>
         )}
       </UserStatus>

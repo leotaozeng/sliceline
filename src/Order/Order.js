@@ -259,7 +259,7 @@ export function Order({
           disabled={orders.length === 0}
           onClick={checkAuthenticated}
         >
-          {t('order.checkout')}
+          {t('order.button-checkout')}
         </ConfirmButton>
       </OrderFooter>
     </OrderStyled>
