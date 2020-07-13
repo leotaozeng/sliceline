@@ -10,6 +10,7 @@ import { Navbar } from './Navbar/Navbar'
 import { Banner } from './Banner/Banner'
 
 import { useAuth } from './Hooks/useAuth'
+import { useTitle } from './Hooks/useTitle'
 import { useOrders } from './Hooks/useOrders'
 import { useOpenFood } from './Hooks/useFoodDialog'
 import { useOrderDialog } from './Hooks/useOrderDialog'
@@ -24,6 +25,8 @@ function App() {
   const orders = useOrders()
   const foodDialog = useOpenFood()
   const orderDialog = useOrderDialog()
+
+  useTitle({ ...foodDialog, ...orders })
 
   return (
     <Suspense fallback={<Loader />}>
