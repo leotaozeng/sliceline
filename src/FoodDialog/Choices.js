@@ -15,7 +15,6 @@ export function Choices({ choice: value, choices, handleChange }) {
       <h3>Choose one</h3>
       <ChoiceGrid>
         {choices.map(choice => {
-          console.log(choice === value)
           return (
             <RadioLabel key={choice}>
               <ChoiceRadio

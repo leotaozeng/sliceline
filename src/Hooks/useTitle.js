@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 
 export function useTitle({ openFoodDialog, orders }) {
-  console.log(orders)
   useEffect(() => {
     if (openFoodDialog) {
       document.title = openFoodDialog.name
