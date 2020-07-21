@@ -12,7 +12,7 @@ export function useAuth() {
     auth
       .signOut()
       .then(() => setAuthenticated(null))
-      .catch(error => console.log(error))
+      .catch(error => console.error(error))
   }
 
   useEffect(() => {
