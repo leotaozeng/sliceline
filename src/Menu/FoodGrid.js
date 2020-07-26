@@ -59,5 +59,5 @@ export const FoodLink = styled.a`
   box-sizing: border-box;
   background: url(${props => props.image}) no-repeat center/cover;
   filter: contrast(75%);
-  transition: all 0.4s;
+  transition: all 0.5s ease-out;
 `
