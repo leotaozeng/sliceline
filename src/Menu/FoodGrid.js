@@ -23,7 +23,7 @@ export const FoodGridItem = styled.li`
   overflow: hidden;
   cursor: pointer;
   box-shadow: 0 0.125rem 0.25rem grey;
-  transition: all 0.4s;
+  transition: all 0.5s ease-out;
 
   &:hover {
     box-shadow: 0 5px 10px grey;
