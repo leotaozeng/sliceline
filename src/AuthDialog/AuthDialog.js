@@ -1,9 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
 import { FirebaseAuth } from 'react-firebaseui'
 import { useTranslation } from 'react-i18next'
+import styled from 'styled-components'
 
-import { uiConfig, auth } from '../firebase.config'
+import { auth, uiConfig } from '../firebase.config'
 import { Dialog, DialogBackdrop, DialogContent } from '../FoodDialog/FoodDialog'
 
 const AuthFormDialog = styled(Dialog)`

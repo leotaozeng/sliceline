@@ -4,11 +4,11 @@ import styled from 'styled-components'
 
 import { foods, formatPrice } from '../Data/FoodData'
 import {
-  SectionName,
   FoodGrid,
   FoodGridItem,
+  FoodLabel,
   FoodLink,
-  FoodLabel
+  SectionName
 } from './FoodGrid'
 
 const MenuStyled = styled.div`
